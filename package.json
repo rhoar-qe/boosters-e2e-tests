@@ -1,0 +1,51 @@
+{
+  "name": "rhoar-protractor-e2e",
+  "version": "0.0.0-development",
+  "description": "End to End tests for rhoar",
+  "keywords": [
+    "e2e",
+    "rhoar",
+    "tests"
+  ],
+  "contributors": [
+    {
+      "name": "Adam Koniar",
+      "email": "akoniar@redhat.com"
+    }
+  ],
+  "homepage": "https://gitlab.cee.redhat.com/akoniar/rhoar-protractor-e2e-tests",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "tsc && protractor js-files/conf.js"
+  },
+  "dependencies": {
+    "jasmine-protractor-matchers": "^2.0.0",
+    "jasmine-reporters": "^2.2.1",
+    "jasmine-spec-reporter": "4.2.1",
+    "jasmine2-reporter": "^0.3.0",
+    "protractor": "^5.1.1",
+    "protractor-jasmine2-screenshot-reporter": "0.3.5"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.8.2",
+    "@types/jasminewd2": "^2.0.3",
+    "@types/lodash": "4.14.61",
+    "@types/node": "^8.0.53",
+    "rimraf": "^2.6.2",
+    "ts-helpers": "1.1.2",
+    "tslint": "5.8.0",
+    "tslint-loader": "^3.5.0",
+    "typescript": "2.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.cee.redhat.com:akoniar/rhoar-protractor-e2e-tests.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.cee.redhat.com/akoniar/rhoar-protractor-e2e-tests/issues"
+  },
+  "engines": {
+    "node": ">= 6.10.3",
+    "npm": ">= 3"
+  }
+}

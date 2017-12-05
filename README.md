@@ -4,10 +4,11 @@
 
 ## Setup
 ```
+$ npm install
 $ webdriver-manager update
 $ webdriver-manager start
 ```
 ## Run the test
 ```
-protractor conf.js
+npm test
 ```
