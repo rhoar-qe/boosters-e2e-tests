@@ -6,9 +6,10 @@ export class HttpBoosterPage {
   greetingResult = element(by.id('greeting-result'));
 
   get() {
+    browser.pause();
     browser.ignoreSynchronization = true;
     browser.waitForAngularEnabled(false);
-    return browser.get('http://http-vertx-akoniar-htttp.a3c1.starter-us-west-1.openshiftapps.com/');
+    return browser.get('http://http-vertx-anonymous-http.192.168.42.199.nip.io');
   }
 
   setName(name: string) : any {
