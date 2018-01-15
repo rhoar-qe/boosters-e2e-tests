@@ -1,19 +1,17 @@
 import {browser, element, by} from 'protractor';
-import {LaucherDeploymentType} from './'
+import {DeploymentTypePage} from './'
 
-export class LauncherNextStep  {
+export class NextStepPage  {
 
-  //TODO write issue for add id to h3 radio button
   buildLink = element(by.xpath('//a[@_ngcontent-c7][contains(text(),"Take a look at your build ")]'));
-
   restartButton = element(by.id('restart'));
 
   clickBuildLink(): any {
     this.buildLink.click()
   }
 
-  clickNext(): LaucherDeploymentType {
+  clickNext(): DeploymentTypePage {
     this.restartButton.click();
-    return new LaucherDeploymentType();
+    return new DeploymentTypePage();
   }
 }

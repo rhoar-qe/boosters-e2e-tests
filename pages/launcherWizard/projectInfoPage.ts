@@ -1,7 +1,7 @@
 import {browser, element, by, protractor} from 'protractor';
-import {LauncherReview} from './';
+import {ReviewPage} from './';
 
-export class LauncherProjectInfo  {
+export class ProjectInfoPage  {
   //TODO write issue for add id to h3 radio button
   runtimeVersionSelect = element(by.id('runtimeVersion'));
   projectName = element(by.id('named'));
@@ -16,11 +16,11 @@ export class LauncherProjectInfo  {
     this.projectName.sendKeys(name);
   }
 
-  clickNext(): LauncherReview {
+  clickNext(): ReviewPage {
     let EC = protractor.ExpectedConditions;
     browser.wait(EC.elementToBeClickable(this.nextButton), 5000);
     this.nextButton.click();
-    return new LauncherReview();
+    return new ReviewPage();
   }
 }
 

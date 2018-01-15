@@ -1,11 +1,11 @@
 import {browser, element, by} from 'protractor';
-import {LauncherMission} from './';
+import {MissionPage} from './';
 
-export class LaucherDeploymentType  {
+export class DeploymentTypePage  {
   openshiftOnlineButton = element(by.buttonText('Use OpenShift Online'));
 
-  clickLauch(): LauncherMission {
+  clickLauch(): MissionPage {
     this.openshiftOnlineButton.click();
-    return new LauncherMission();
+    return new MissionPage();
   }
 }

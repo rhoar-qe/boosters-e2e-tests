@@ -38,9 +38,6 @@
     "tslint-loader": "^3.5.0",
     "typescript": "2.5.3"
   },
-  "peerDependencies":{
-    "fabric8-ui-tests":"^0.0.0-development"
-  },
   "repository": {
     "type": "git",
     "url": "git@gitlab.cee.redhat.com:akoniar/rhoar-protractor-e2e-tests.git"

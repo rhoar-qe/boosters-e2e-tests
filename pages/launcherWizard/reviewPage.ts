@@ -1,7 +1,7 @@
 import {browser, element, by, protractor} from 'protractor';
-import {LauncherBuildingProject,ProjectVersion} from './'
+import {BuildingProjectPage,ProjectVersion} from './'
 
-export class LauncherReview  {
+export class ReviewPage  {
   //TODO write issue for add id to h3 radio button
   private missionSpan = element(by.xpath('//b[text()=\'Mission\']/../../p[2]/span'));
   private runtimeSpan = element(by.xpath('//b[text()=\'Runtime\']/../../p[2]/span'));
@@ -26,8 +26,8 @@ export class LauncherReview  {
     expect(this.nameSpan.getText()).toContain(name);
   }
 
-  clickNext(): LauncherBuildingProject {
+  clickNext(): BuildingProjectPage {
     this.launchButton.click();
-    return new LauncherBuildingProject();
+    return new BuildingProjectPage();
   }
 }

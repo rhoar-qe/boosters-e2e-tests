@@ -1,7 +1,7 @@
 import {browser, element, by} from 'protractor';
-import {LauncherProjectInfo} from './'
+import {ProjectInfoPage} from './'
 
-export class LauncherRuntime  {
+export class RuntimePage  {
 
   //TODO write issue for add id to h3 radio button
   selectVertxDiv = element(by.xpath('//div[@id="Eclipse Vert.x"]'));
@@ -12,8 +12,8 @@ export class LauncherRuntime  {
     this.selectVertxDiv.click()
   }
 
-  clickNext(): LauncherProjectInfo {
+  clickNext(): ProjectInfoPage {
     this.nextButton.click();
-    return new LauncherProjectInfo()
+    return new ProjectInfoPage()
   }
 }

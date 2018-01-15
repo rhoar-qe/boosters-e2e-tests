@@ -4,7 +4,7 @@ import { browser, $$ } from 'protractor';
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('HTTP booster page', () => {
   it('Should greet the named user', () => {
-    let launcherDashboard = new Pages.LauncherDashboard();
+    let launcherDashboard = new Pages.DashboardPage();
     launcherDashboard.get();
     let launcherDeploymentType = launcherDashboard.clickLauch();
     let launcherMission = launcherDeploymentType.clickLauch();

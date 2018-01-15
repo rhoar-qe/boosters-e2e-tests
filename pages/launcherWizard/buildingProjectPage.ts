@@ -1,16 +1,15 @@
 import {browser, element, by, protractor} from 'protractor';
-import {LauncherProjectInfo} from './';
+import {NextStepPage} from './';
 
-export class LauncherBuildingProject  {
+export class BuildingProjectPage  {
   nextButton = element(by.xpath('//button[@id="next"][not(@disabled)]'));
-  //TODO write issue for add id to h3 radio button
 
-
-  clickNext(): void {
+  clickNext(): NextStepPage {
     this.isErrorDivPresent();
     let EC = protractor.ExpectedConditions;
     browser.wait(EC.elementToBeClickable(this.nextButton), 20000);
     this.nextButton.click();
+    return new NextStepPage();
   }
 
   isErrorDivPresent(): void {

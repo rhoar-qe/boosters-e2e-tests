@@ -17,4 +17,9 @@ export let config: Config = {
   },
   specs: [ 'specs/specL*.js' ],
   seleniumAddress: 'http://localhost:4444/wd/hub'
+  //Example of parameters
+  //params: {
+  //  username: "julie",
+  //  password: "1234"
+  //}
 };
