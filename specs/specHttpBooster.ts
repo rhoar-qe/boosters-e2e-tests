@@ -1,4 +1,4 @@
-import {HttpBoosterPage} from '../pages/httpBoosterPage';
+import {HttpBoosterPage} from '../pages';
 import {browser,protractor} from 'protractor';
 
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.

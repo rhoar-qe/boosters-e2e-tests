@@ -1,19 +1,18 @@
 import {browser, element, by, protractor} from 'protractor';
-import {NextStepPage} from './';
+import {OpenShiftNextStepPage} from './';
 
-export class BuildingProjectPage  {
+export class OpenShiftBuildingProjectPage  {
   nextButton = element(by.xpath('//button[@id="next"][not(@disabled)]'));
 
-  clickNext(): NextStepPage {
+  clickNext(): OpenShiftNextStepPage {
     this.isErrorDivPresent();
     let EC = protractor.ExpectedConditions;
-    browser.wait(EC.elementToBeClickable(this.nextButton), 20000);
+    browser.wait(EC.elementToBeClickable(this.nextButton), 50000);
     this.nextButton.click();
-    return new NextStepPage();
+    return new OpenShiftNextStepPage();
   }
 
   isErrorDivPresent(): void {
-    element(by.xpath("")).isElementPresent
     let errorDiv = element(by.xpath('//div[@class="alert alert-danger alert-dismissable"]'));
     expect(errorDiv.isPresent()).toBeFalsy();
   }

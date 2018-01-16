@@ -16,10 +16,8 @@ export let config: Config = {
     browserName: 'chrome'
   },
   specs: [ 'specs/specL*.js' ],
-  seleniumAddress: 'http://localhost:4444/wd/hub'
-  //Example of parameters
-  //params: {
-  //  username: "julie",
-  //  password: "1234"
-  //}
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+  params: {
+    launcherUrl: "http://launchpad-nginx-my-laucher.192.168.42.199.nip.io/",
+  }
 };

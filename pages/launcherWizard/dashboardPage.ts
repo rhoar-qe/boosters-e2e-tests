@@ -2,11 +2,11 @@ import {browser, element, by, protractor} from 'protractor';
 import {DeploymentTypePage} from './';
 
 export class DashboardPage  {
-  lauchButton = element(by.className('btn btn-lg'));
+  private lauchButton = element(by.className('btn btn-lg'));
+  private url = browser.params.launcherUrl;
 
   get() {
-    console.log(browser.params);
-    return browser.get('http://launchpad-nginx-my-laucher.192.168.42.199.nip.io/');
+    return browser.get(this.url);
   }
 
   clickLauch(): DeploymentTypePage {

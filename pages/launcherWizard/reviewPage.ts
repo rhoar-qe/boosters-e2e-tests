@@ -1,14 +1,12 @@
 import {browser, element, by, protractor} from 'protractor';
-import {BuildingProjectPage,ProjectVersion} from './'
+import {ProjectVersion} from './'
 
-export class ReviewPage  {
+export abstract class ReviewPage  {
   //TODO write issue for add id to h3 radio button
   private missionSpan = element(by.xpath('//b[text()=\'Mission\']/../../p[2]/span'));
   private runtimeSpan = element(by.xpath('//b[text()=\'Runtime\']/../../p[2]/span'));
   private versionSpan = element(by.xpath('//b[text()=\'Runtime Version:\']/../span'));
   private nameSpan = element(by.xpath('//b[text()=\'OpenShift Project name:\']/../span'));
-
-  private launchButton = element(by.id('launch'));
 
   validateMission(mission : string) : any {
     expect(this.missionSpan.getText()).toContain(mission);
@@ -26,8 +24,4 @@ export class ReviewPage  {
     expect(this.nameSpan.getText()).toContain(name);
   }
 
-  clickNext(): BuildingProjectPage {
-    this.launchButton.click();
-    return new BuildingProjectPage();
-  }
 }
