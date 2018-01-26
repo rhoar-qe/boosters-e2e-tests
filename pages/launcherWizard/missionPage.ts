@@ -18,7 +18,7 @@ export abstract class MissionPage  {
   }
 
   selectMission(mission : Mission): void{
-    switch(mission){
+    switch(Mission[mission]){
       case Mission.CRUD:
         this.selectCRUD();
       break;
@@ -42,31 +42,31 @@ export abstract class MissionPage  {
 
   selectCRUD(): void {
     this.selectedMission = Mission.CRUD;
-    this.crudRadioButton.click()
+    this.crudRadioButton.click();
   }
 
   selectCircuitBreaker(): void {
     this.selectedMission = Mission.CircuitBreaker;
-    this.circuitBreakerRadioButton.click()
+    this.circuitBreakerRadioButton.click();
   }
 
   selectConfigMap(): void {
     this.selectedMission = Mission.ConfigMap;
-    this.configMapRadioButton.click()
+    this.configMapRadioButton.click();
   }
 
   selectHealthCheck(): void {
     this.selectedMission = Mission.HealthCheck;
-    this.healthCheckRadioButton.click()
+    this.healthCheckRadioButton.click();
   }
   selectHTTP(): void {
     this.selectedMission = Mission.HTTP;
-    this.httpRadioButton.click()
+    this.httpRadioButton.click();
   }
 
   selectSecuredHTTP(): void {
     this.selectedMission = Mission.SecuredHTTP;
-    this.crudRadioButton.click()
+    this.securedHttpRadioButton.click();
   }
 
 }

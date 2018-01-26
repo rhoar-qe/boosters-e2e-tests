@@ -6,8 +6,7 @@ export abstract class ProjectInfoPage  {
   nextButton = element(by.xpath('//button[@id="next"][not(@disabled)]'));
 
   selectVersion(version : ProjectVersion): void {
-    browser.sleep(4000);
-    this.runtimeVersionSelect.$('[value*='+version+']').click();
+    this.runtimeVersionSelect.$('[value*=' + ProjectVersion[version] + ']').click();
   }
 }
 

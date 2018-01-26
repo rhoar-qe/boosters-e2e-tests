@@ -18,6 +18,10 @@ export let config: Config = {
   specs: [ 'specs/specL*.js' ],
   seleniumAddress: 'http://localhost:4444/wd/hub',
   params: {
-    launcherUrl: "http://launchpad-nginx-my-laucher.192.168.42.199.nip.io/",
-  }
+    launcherUrl: "http://launchpad-nginx-launcher.192.168.42.199.nip.io/",
+  },
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 10000000
+  },
+  resultJsonOutputFile:'./result.json',
 };

@@ -1,5 +1,5 @@
 import {browser, element, by, protractor} from 'protractor';
-import {ProjectVersion} from './'
+import {ProjectVersion, Mission, Runtime} from './'
 
 export abstract class ReviewPage  {
   //TODO write issue for add id to h3 radio button
@@ -8,19 +8,19 @@ export abstract class ReviewPage  {
   private versionSpan = element(by.xpath('//b[text()=\'Runtime Version:\']/../span'));
   private nameSpan = element(by.xpath('//b[text()=\'OpenShift Project name:\']/../span'));
 
-  validateMission(mission : string) : any {
-    expect(this.missionSpan.getText()).toContain(mission);
+  validateMission(mission : Mission) : void {
+    expect(this.missionSpan.getText()).toContain(Mission[mission]);
   }
 
-  validateRuntime(runtime : string) : any {
-    expect(this.runtimeSpan.getText()).toContain(runtime);
+  validateRuntime(runtime : Runtime) : void {
+    expect(this.runtimeSpan.getText()).toContain(Runtime[runtime]);
   }
 
-  validateVersion(version : ProjectVersion) : any {
-    expect(this.versionSpan.getText()).toContain(version);
+  validateVersion(version : ProjectVersion) : void {
+    expect(this.versionSpan.getText()).toContain(ProjectVersion[version]);
   }
 
-  validateName(name : string) {
+  validateName(name : string) : void {
     expect(this.nameSpan.getText()).toContain(name);
   }
 

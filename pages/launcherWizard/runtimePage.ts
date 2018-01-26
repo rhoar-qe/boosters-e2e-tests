@@ -17,13 +17,15 @@ export abstract class RuntimePage  {
   }
 
   selectRuntime(runtime: Runtime): void {
-    switch(runtime){
+    switch(Runtime[runtime]){
       case Runtime.Vertx:
         this.selectVertx();
         break;
+      /*
       case Runtime.NodeJS:
         this.selectNodeJS();
         break;
+      */
       case Runtime.SpringBoot:
         this.selectSpringBoot();
         break;
@@ -37,12 +39,12 @@ export abstract class RuntimePage  {
     this.selectedRuntime = Runtime.Vertx;
     this.vertxDiv.click()
   }
-
+  /*
   selectNodeJS(): void {
     this.selectedRuntime = Runtime.NodeJS;
     this.nodeJSDiv.click();
   }
-
+  */
   selectSpringBoot(): void {
     this.selectedRuntime = Runtime.SpringBoot;
     this.springBootDiv.click();
@@ -56,7 +58,7 @@ export abstract class RuntimePage  {
 
 export enum Runtime {
   Vertx = 'Eclipse Vert.x',
-  NodeJS = 'Node.js',
+  //NodeJS = 'Node.js', TODO implenet new page object for NodeJS projectInfo
   SpringBoot = 'Spring Boot',
   Swarm = 'WildFly Swarm'
 }

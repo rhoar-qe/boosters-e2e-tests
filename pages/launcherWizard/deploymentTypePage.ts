@@ -8,7 +8,7 @@ export class DeploymentTypePage  {
   openshiftOnlineButton = element(by.buttonText('Use OpenShift Online'));
   locallyButton = element(by.buttonText('I will build and run locally'));
 
-  clickUseOpenShift(): OpenShiftMissionPage {
+  clickUseOpenShift(): OpenShiftMissionPage { 
     this.openshiftOnlineButton.click();
     return new OpenShiftMissionPage();
   }
