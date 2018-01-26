@@ -15,10 +15,19 @@ export let config: Config = {
   capabilities: {
     browserName: 'chrome'
   },
-  specs: [ 'specs/specL*.js' ],
+  specs: [ 'specs/spec*Booster.js' ],
   seleniumAddress: 'http://localhost:4444/wd/hub',
   params: {
-    launcherUrl: "http://launchpad-nginx-launcher.192.168.42.199.nip.io/",
+    url: {
+      launcher : process.env.LAUNCHER_URL,
+      boosters : {
+          http : process.env.HTTP_BOOSTER_URL,
+          crud : process.env.CRUD_BOOSTER_URL,
+          circuitBreaker : process.env.CIRCUIT_BREAKER_URL,
+          configMap : process.env.CONFIG_MAP_URL,
+          healthCheck : process.env.HEALTH_CHECK_URL,
+      }
+    }
   },
   jasmineNodeOpts: {
     defaultTimeoutInterval: 10000000
