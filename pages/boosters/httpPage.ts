@@ -1,6 +1,6 @@
 import {browser, element, by, protractor, ElementFinder} from 'protractor';
 
-export class HttpBoosterPage {
+export class HttpPage {
   private nameInput = element(by.id('name'));
   private invokeButton = element(by.id('invoke'));
   private greetingResult = element(by.id('greeting-result'));
@@ -8,10 +8,14 @@ export class HttpBoosterPage {
   private static readonly URL = browser.params.url.boosters.http;
   public static readonly DEFAULT_NAME = "World";
 
+  public constructor(){
+    this.get();
+  }
+
   public get() {
     browser.ignoreSynchronization = true;
     browser.waitForAngularEnabled(false);
-    return browser.get(HttpBoosterPage.URL);
+    return browser.get(HttpPage.URL);
   }
 
   public setName(name: string) : any {

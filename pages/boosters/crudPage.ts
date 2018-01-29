@@ -1,6 +1,6 @@
 import {browser, element, by, protractor, ElementFinder, promise} from 'protractor';
 
-export class CrudBoosterPage {
+export class CrudPage {
 
   private static readonly URL = browser.params.url.boosters.crud;
 
@@ -8,8 +8,12 @@ export class CrudBoosterPage {
   private addEditFruitStock = element(by.xpath('//input[@ng-model="form.stock"]'));
   private saveChages = element(by.xpath('//input[@type="submit"]'))
 
+  public constructor(){
+    this.get();
+  }
+
   public get() {
-    return browser.get(CrudBoosterPage.URL);
+    return browser.get(CrudPage.URL);
   }
 
   public clearFruitName(){

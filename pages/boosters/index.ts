@@ -1,2 +1,3 @@
-export * from './httpBoosterPage';
-export * from './crudBoosterPage';
+export * from './httpPage';
+export * from './crudPage';
+export * from './circuitBreakerPage'
