@@ -9,7 +9,7 @@ $ webdriver-manager update
 $ webdriver-manager start
 ```
 ## Before Test
-Is nessesary set url adress for boosters
+Is necessary set URL address for boosters
 ```
 export HTTP_BOOSTER_URL="url for http booster"
 export CRUD_BOOSTER_URL="url for crud booster"
