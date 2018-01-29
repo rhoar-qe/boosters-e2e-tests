@@ -6,10 +6,12 @@ export class CircuitBreakerPage {
 
   private invokeButton = element(by.id('invoke'));
   private toggleButton = element(by.id('toggle'));
-  private nameServiceState = element(by.id('svc-state'));
+  private nameServiceState = element(by.xpath('//p[@id="name-state"]//span[@id="svc-state"]'));
   private greetingResult = element(by.id('greeting-result'));
 
   public constructor(){
+    browser.ignoreSynchronization = true;
+    browser.waitForAngularEnabled(false);
     this.get();
   }
 
