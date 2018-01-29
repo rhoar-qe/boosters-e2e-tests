@@ -67,8 +67,6 @@ describe('CRUD booster page', () => {
     crudBoosterPage.setFruitStock(stock);
     crudBoosterPage.clickSaveChanges();
     crudBoosterPage.isFruitInList(name,stock);
-    console.log('1');
-    browser.sleep(3000);
 
 
     let newStock = '10';
@@ -77,8 +75,6 @@ describe('CRUD booster page', () => {
     crudBoosterPage.setFruitStock(newStock);
     crudBoosterPage.clickSaveChanges();
     crudBoosterPage.isFruitInList(name,newStock);
-    console.log('2');
-    browser.sleep(3000);
 
     let newName = 'Blackberry'
     crudBoosterPage.clickEditOnFruit(name);
@@ -86,8 +82,6 @@ describe('CRUD booster page', () => {
     crudBoosterPage.setFruitName(newName);
     crudBoosterPage.clickSaveChanges();
     crudBoosterPage.isFruitInList(newName,newStock);
-    console.log('3');
-    browser.sleep(3000);
 
     crudBoosterPage.clickEditOnFruit(newName);
     crudBoosterPage.clearAllInputs();
