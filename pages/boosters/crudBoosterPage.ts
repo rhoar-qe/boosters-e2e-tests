@@ -33,12 +33,12 @@ export class CrudBoosterPage {
     this.addEditFruitStock.sendKeys(stock);
   }
 
-  public async getFruitStock(): Promise<String> {
+  public async getFruitStockValue(): Promise<String> {
     return this.addEditFruitStock.getAttribute('value');
   }
 
-  public validateFruitStockText(exceptedText : string){
-    expect(protractor.ExpectedConditions.textToBePresentInElementValue(this.addEditFruitStock,exceptedText));
+  public getFruitStockElement() : ElementFinder{
+    return this.addEditFruitStock
   }
 
   public clickSaveChanges(){

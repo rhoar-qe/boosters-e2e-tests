@@ -1,4 +1,4 @@
-import {browser, element, by, protractor} from 'protractor';
+import {browser, element, by, protractor, ElementFinder} from 'protractor';
 
 export class HttpBoosterPage {
   private nameInput = element(by.id('name'));
@@ -22,11 +22,7 @@ export class HttpBoosterPage {
     return this.invokeButton.click();
   }
 
-  public validateDefaultGreeting(){
-    this.validateGreeting(HttpBoosterPage.DEFAULT_NAME);
-  }
-
-  public validateGreeting(name: string): any {
-    browser.wait(protractor.ExpectedConditions.textToBePresentInElement(this.greetingResult,"Hello, " + name),1000);
+  public getGreetingElement(): ElementFinder {
+    return this.greetingResult;
   }
 }

@@ -9,13 +9,16 @@ describe('HTTP booster page', () => {
     httpBoosterPage.get();
     httpBoosterPage.setName(name);
     httpBoosterPage.clickInvoke();
-    httpBoosterPage.validateGreeting(name);
+    let EC = protractor.ExpectedConditions;
+    browser.wait(EC.textToBePresentInElement(httpBoosterPage.getGreetingElement(),"Hello, " + name),1000);
   });
 
   it('Test the default greeting', () => {
     let httpBoosterPage = new HttpBoosterPage();
+    let name = HttpBoosterPage.DEFAULT_NAME;
     httpBoosterPage.get();
     httpBoosterPage.clickInvoke();
-    httpBoosterPage.validateDefaultGreeting();
+    let EC = protractor.ExpectedConditions;
+    browser.wait(EC.textToBePresentInElement(httpBoosterPage.getGreetingElement(),"Hello, " + name),1000);
   });
 });

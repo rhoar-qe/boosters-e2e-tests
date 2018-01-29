@@ -51,10 +51,10 @@ describe('CRUD booster page', () => {
   it('Set some string to stock', async () => {
     let crudBoosterPage = new CrudBoosterPage();
     crudBoosterPage.get();
-    let prewStockValue = await crudBoosterPage.getFruitStock();
+    let prewStockValue = await crudBoosterPage.getFruitStockValue();
     crudBoosterPage.setFruitStock("abcd");
-    crudBoosterPage.setFruitStock("5");
-    crudBoosterPage.validateFruitStockText(prewStockValue.toString());
+    let EC = protractor.ExpectedConditions;
+    expect(EC.textToBePresentInElementValue(crudBoosterPage.getFruitStockElement(),prewStockValue.toString()));
   });
 
   it('Create edit and delete fruit with name', () => {
@@ -67,6 +67,8 @@ describe('CRUD booster page', () => {
     crudBoosterPage.setFruitStock(stock);
     crudBoosterPage.clickSaveChanges();
     crudBoosterPage.isFruitInList(name,stock);
+    console.log('1');
+    browser.sleep(3000);
 
 
     let newStock = '10';
@@ -75,13 +77,17 @@ describe('CRUD booster page', () => {
     crudBoosterPage.setFruitStock(newStock);
     crudBoosterPage.clickSaveChanges();
     crudBoosterPage.isFruitInList(name,newStock);
+    console.log('2');
+    browser.sleep(3000);
 
     let newName = 'Blackberry'
     crudBoosterPage.clickEditOnFruit(name);
-    crudBoosterPage.setFruitName(newName);
     crudBoosterPage.clearFruitName();
+    crudBoosterPage.setFruitName(newName);
     crudBoosterPage.clickSaveChanges();
     crudBoosterPage.isFruitInList(newName,newStock);
+    console.log('3');
+    browser.sleep(3000);
 
     crudBoosterPage.clickEditOnFruit(newName);
     crudBoosterPage.clearAllInputs();
