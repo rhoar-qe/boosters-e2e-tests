@@ -1,1 +1,1 @@
-export * from './specUtils';
+export * from './launcherUtil';

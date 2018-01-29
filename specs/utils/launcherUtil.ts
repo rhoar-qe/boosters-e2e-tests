@@ -1,15 +1,15 @@
 import * as Pages from '../../pages'
-export class SpecUtils {
+export class LauncherUtil {
 
   public static deployViaOpenshift(mission: Pages.Mission, runtime: Pages.Runtime,version: Pages.ProjectVersion){
-    let deploymentPage = SpecUtils.getDashboardAndClickLaunch();
+    let deploymentPage = LauncherUtil.getDashboardAndClickLaunch();
     let missionPage = deploymentPage.clickUseOpenShift();
     missionPage.selectMission(mission);
     let runtimePage = missionPage.clickNext();
     runtimePage.selectRuntime(runtime);
     let projectInfoPage = runtimePage.clickNext();
     projectInfoPage.selectVersion(version);
-    let name = SpecUtils.createProjectName(<Pages.Mission>mission,<Pages.Runtime>runtime,<Pages.ProjectVersion>version);
+    let name = LauncherUtil.createProjectName(<Pages.Mission>mission,<Pages.Runtime>runtime,<Pages.ProjectVersion>version);
     projectInfoPage.setProjectName(name);
     let reviewPage = projectInfoPage.clickNext();
     reviewPage.validateMission(mission);

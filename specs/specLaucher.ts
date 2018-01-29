@@ -1,4 +1,4 @@
-import * as SpecUtils from './utils';
+import {LauncherUtil} from './utils';
 import {ProjectVersion,Mission,Runtime} from '../pages';
 import { browser, $$ } from 'protractor';
 
@@ -7,7 +7,7 @@ for(let runtime in Runtime){
     for (let mission in Mission){
       for(let version in ProjectVersion){
         it('Deploy mission ' + mission + ' use version ' + version, async() => {
-          await SpecUtils.SpecUtils.deployViaOpenshift(<Mission>mission,<Runtime>runtime,<ProjectVersion>version);
+          await LauncherUtil.deployViaOpenshift(<Mission>mission,<Runtime>runtime,<ProjectVersion>version);
         });
       }
     }
