@@ -1,8 +1,7 @@
 import {browser, element, by, protractor, ElementFinder, promise} from 'protractor';
+import {NonAngluarBoosterPage} from './nonAngularBoosterPage';
 
-export class CircuitBreakerPage {
-
-  private static readonly URL = browser.params.url.boosters.circuitBreaker;
+export class CircuitBreakerPage extends NonAngluarBoosterPage {
 
   private invokeButton = element(by.id('invoke'));
   private toggleButton = element(by.id('toggle'));
@@ -10,13 +9,13 @@ export class CircuitBreakerPage {
   private greetingResult = element(by.id('greeting-result'));
 
   public constructor(){
-    browser.ignoreSynchronization = true;
-    browser.waitForAngularEnabled(false);
-    this.get();
+    super(browser.params.url.boosters.circuitBreaker);
   }
 
   public get() {
-    return browser.get(CircuitBreakerPage.URL);
+    browser.ignoreSynchronization = true;
+    browser.waitForAngularEnabled(false);
+    super.get();
   }
 
   public clickToggle(){

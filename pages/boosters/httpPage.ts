@@ -1,21 +1,21 @@
 import {browser, element, by, protractor, ElementFinder} from 'protractor';
+import {NonAngluarBoosterPage} from './nonAngularBoosterPage';
 
-export class HttpPage {
+export class HttpPage extends NonAngluarBoosterPage {
   private nameInput = element(by.id('name'));
   private invokeButton = element(by.id('invoke'));
   private greetingResult = element(by.id('greeting-result'));
 
-  private static readonly URL = browser.params.url.boosters.http;
-  public static readonly DEFAULT_NAME = "World";
+  public static readonly HTTP_GREETINGS_DEFAULT_NAME = "World";
 
   public constructor(){
-    this.get();
+    super(browser.params.url.boosters.http);
   }
 
   public get() {
     browser.ignoreSynchronization = true;
     browser.waitForAngularEnabled(false);
-    return browser.get(HttpPage.URL);
+    super.get();
   }
 
   public setName(name: string) : any {
