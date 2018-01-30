@@ -10,7 +10,7 @@ export class HealthCheck extends HttpPage  {
   }
 
   public clickStopService() {
-    this.clickStopService();
+    this.stopService.click();
   }
 
 }
