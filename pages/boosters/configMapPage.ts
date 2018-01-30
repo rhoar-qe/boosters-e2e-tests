@@ -2,8 +2,7 @@ import {browser, element, by, protractor, ElementFinder} from 'protractor';
 import {HttpPage} from './';
 
 export class ConfigMapPage extends HttpPage  {
-
-  public static readonly CONFIG_MAP_GREETINGS_DEFAULT_NAME = "World";
+  
   private configMapValue;
 
   public constructor (value : string = ConfigMapPage.getDefaultConfigMapValue()) {

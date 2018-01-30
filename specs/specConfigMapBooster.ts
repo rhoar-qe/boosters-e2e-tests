@@ -15,7 +15,7 @@ describe('ConfigMap booster page', () => {
 
   it('Test the default greeting', () => {
     let configMapPage = new ConfigMapPage();
-    let name = ConfigMapPage.CONFIG_MAP_GREETINGS_DEFAULT_NAME;
+    let name = ConfigMapPage.GREETINGS_DEFAULT_NAME;
     configMapPage.get();
     configMapPage.clickInvoke();
     let EC = protractor.ExpectedConditions;

@@ -15,7 +15,7 @@ describe('HTTP booster page', () => {
 
   it('Test the default greeting', () => {
     let httpBoosterPage = new HttpPage();
-    let name = HttpPage.HTTP_GREETINGS_DEFAULT_NAME;
+    let name = HttpPage.GREETINGS_DEFAULT_NAME;
     httpBoosterPage.get();
     httpBoosterPage.clickInvoke();
     let EC = protractor.ExpectedConditions;

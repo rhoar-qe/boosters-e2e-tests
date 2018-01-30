@@ -6,7 +6,7 @@ export class HttpPage extends NonAngluarBoosterPage {
   private invokeButton = element(by.id('invoke'));
   private greetingResult = element(by.id('greeting-result'));
 
-  public static readonly HTTP_GREETINGS_DEFAULT_NAME = "World";
+  public static readonly GREETINGS_DEFAULT_NAME = "World";
 
   public constructor(url : string = browser.params.url.boosters.http){
     super(url);
