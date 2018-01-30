@@ -23,9 +23,14 @@ export let config: Config = {
       boosters : {
           http : process.env.HTTP_BOOSTER_URL,
           crud : process.env.CRUD_BOOSTER_URL,
-          circuitBreaker : process.env.CIRCUIT_BREAKER_URL,
-          configMap : process.env.CONFIG_MAP_URL,
-          healthCheck : process.env.HEALTH_CHECK_URL,
+          circuitBreaker : process.env.CIRCUIT_BREAKER_BOOSTER_URL,
+          configMap : process.env.CONFIG_MAP_BOOSTER_URL,
+          healthCheck : process.env.HEALTH_CHECK_BOOSTER_URL,
+      }
+    },
+    values : {
+      boosters : {
+        configMap : process.env.CONFIG_MAP_BOOSTER_VALUE,
       }
     }
   },

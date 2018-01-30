@@ -8,8 +8,8 @@ export class HttpPage extends NonAngluarBoosterPage {
 
   public static readonly HTTP_GREETINGS_DEFAULT_NAME = "World";
 
-  public constructor(){
-    super(browser.params.url.boosters.http);
+  public constructor(url : string = browser.params.url.boosters.http){
+    super(url);
   }
 
   public get() {
