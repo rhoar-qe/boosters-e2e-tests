@@ -12,12 +12,6 @@ export class CircuitBreakerPage extends NonAngluarBoosterPage {
     super(browser.params.url.boosters.circuitBreaker);
   }
 
-  public get() {
-    browser.ignoreSynchronization = true;
-    browser.waitForAngularEnabled(false);
-    super.get();
-  }
-
   public clickToggle(){
     this.toggleButton.click();
   }

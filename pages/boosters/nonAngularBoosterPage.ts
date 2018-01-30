@@ -8,8 +8,8 @@ export abstract class NonAngluarBoosterPage extends BoosterPage{
   }
 
   public get(){
-    browser.ignoreSynchronization = true;
+    browser.ignoreSynchronization = false;
     browser.waitForAngularEnabled(false);
-    super.get();
+    return super.get();
   }
 }

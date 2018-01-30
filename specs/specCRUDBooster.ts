@@ -6,8 +6,9 @@ import {browser,protractor} from 'protractor';
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('CRUD booster page', () => {
 
-  it('Set empty name', () => {
+  xit('Set empty name', () => {
     let crudPage = new CrudPage();
+    crudPage.get();
     crudPage.clearAllInputs();
     crudPage.setFruitName("");
     crudPage.clickSaveChanges();
@@ -23,6 +24,7 @@ describe('CRUD booster page', () => {
   */
   xit('Set empty stock', () => {
     let crudPage = new CrudPage();
+    crudPage.get();
     crudPage.clearAllInputs();
     crudPage.setFruitName("name");
     crudPage.setFruitStock("");
@@ -33,8 +35,9 @@ describe('CRUD booster page', () => {
     alert.accept();
   });
 
-  it('Set empty stock and name', () => {
+  xit('Set empty stock and name', () => {
     let crudPage = new CrudPage();
+    crudPage.get();
     crudPage.clearAllInputs();
     crudPage.setFruitName("");
     crudPage.setFruitStock("");
@@ -45,16 +48,18 @@ describe('CRUD booster page', () => {
     alert.accept();
   });
 
-  it('Set some string to stock', async () => {
+  xit('Set some string to stock', async () => {
     let crudPage = new CrudPage();
+    crudPage.get();
     let prewStockValue = await crudPage.getFruitStockValue();
     crudPage.setFruitStock("abcd");
     let EC = protractor.ExpectedConditions;
     expect(EC.textToBePresentInElementValue(crudPage.getFruitStockElement(),prewStockValue.toString()));
   });
 
-  it('Create edit and delete fruit with name', () => {
+  xit('Create edit and delete fruit with name', () => {
     let crudPage = new CrudPage();
+    crudPage.get();
     let name = 'Peach';
     let stock = '100';
     crudPage.clearAllInputs();

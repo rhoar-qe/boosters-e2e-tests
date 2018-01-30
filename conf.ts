@@ -26,11 +26,16 @@ export let config: Config = {
           circuitBreaker : process.env.CIRCUIT_BREAKER_BOOSTER_URL,
           configMap : process.env.CONFIG_MAP_BOOSTER_URL,
           healthCheck : process.env.HEALTH_CHECK_BOOSTER_URL,
+          securedHttp : process.env.SECURED_HTTP_BOOSTER_URL,
       }
     },
     values : {
       boosters : {
         configMap : process.env.CONFIG_MAP_BOOSTER_VALUE,
+        securedHttp : {
+          username : process.env.SECURED_HTTP_BOOSTER_USERMAME,
+          password : process.env.SECURED_HTTP_BOOSTER_PASSWORD,
+        }
       }
     }
   },

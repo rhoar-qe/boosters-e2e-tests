@@ -12,12 +12,6 @@ export class HttpPage extends NonAngluarBoosterPage {
     super(url);
   }
 
-  public get() {
-    browser.ignoreSynchronization = true;
-    browser.waitForAngularEnabled(false);
-    super.get();
-  }
-
   public setName(name: string) : any {
     return this.nameInput.sendKeys(name);
   }

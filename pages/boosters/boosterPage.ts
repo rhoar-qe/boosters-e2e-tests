@@ -3,9 +3,9 @@ export abstract class BoosterPage{
   private readonly URL;
   public constructor(url : string){
     this.URL = url;
-    this.get();
   }
   public get(){
-    browser.get(this.URL);
+    console.log('go to ' + this.URL);
+    return browser.get(this.URL);
   }
 }
