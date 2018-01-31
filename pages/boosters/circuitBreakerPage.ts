@@ -1,7 +1,7 @@
-import {browser, element, by, protractor, ElementFinder, promise} from 'protractor';
-import {NonAngluarBoosterPage} from './nonAngularBoosterPage';
+import {browser, element, by, protractor, ElementFinder} from 'protractor';
+import {AbstractNonAngularPage} from '../abstractNonAngularPage';
 
-export class CircuitBreakerPage extends NonAngluarBoosterPage {
+export class CircuitBreakerPage extends AbstractNonAngularPage {
 
   private invokeButton = element(by.id('invoke'));
   private toggleButton = element(by.id('toggle'));
@@ -12,12 +12,12 @@ export class CircuitBreakerPage extends NonAngluarBoosterPage {
     super(browser.params.url.boosters.circuitBreaker);
   }
 
-  public clickToggle(){
-    this.toggleButton.click();
+  public async clickToggle() : Promise<void> {
+    return this.toggleButton.click();
   }
 
-  public clickInvoke(){
-    this.invokeButton.click();
+  public async clickInvoke() : Promise<void>{
+    return this.invokeButton.click();
   }
 
   public getNameServiceStateElement() : ElementFinder {

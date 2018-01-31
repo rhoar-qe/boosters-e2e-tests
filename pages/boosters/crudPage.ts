@@ -1,7 +1,7 @@
 import {browser, element, by, protractor, ElementFinder, promise} from 'protractor';
-import {BoosterPage} from './boosterPage';
+import {AbstractAngularPage} from '../abstractAngularPage';
 
-export class CrudPage extends BoosterPage {
+export class CrudPage extends AbstractAngularPage {
 
   private addEditFruitName = element(by.xpath('//input[@ng-model="form.name"]'));
   private addEditFruitStock = element(by.xpath('//input[@ng-model="form.stock"]'));
@@ -11,25 +11,20 @@ export class CrudPage extends BoosterPage {
     super(browser.params.url.boosters.crud);
   }
 
-  public clearFruitName(){
+  public async clearFruitName() : Promise<void> {
     this.addEditFruitName.clear();
   }
 
-  public clearFruitStock(){
+  public async clearFruitStock() : Promise<void> {
     this.addEditFruitStock.clear();
   }
 
-  public clearAllInputs(){
-    this.clearFruitName();
-    this.clearFruitStock();
+  public async setFruitName(name : string) : Promise<void> {
+    return this.addEditFruitName.sendKeys(name);
   }
 
-  public setFruitName(name : string) {
-    this.addEditFruitName.sendKeys(name);
-  }
-
-  public setFruitStock(stock : string){
-    this.addEditFruitStock.sendKeys(stock);
+  public async setFruitStock(stock : string){
+    return this.addEditFruitStock.sendKeys(stock);
   }
 
   public async getFruitStockValue(): Promise<String> {
@@ -40,25 +35,19 @@ export class CrudPage extends BoosterPage {
     return this.addEditFruitStock
   }
 
-  public clickSaveChanges(){
-    this.saveChages.click();
+  public async clickSaveChanges() : Promise<void>{
+    return this.saveChages.click();
   }
 
-  public isFruitInList(name : string, stock : string){
-    let FruitRow = this.getElementByNameAndStock(name, stock);
-    let EC = protractor.ExpectedConditions;
-    browser.wait(EC.visibilityOf(FruitRow),1000);
-  }
-
-  private getElementByNameAndStock(name : string, stock : string) : ElementFinder  {
+  public getElementByNameAndStock(name : string, stock : string) : ElementFinder  {
     return element(by.xpath('//div[@ng-repeat="fruit in fruits"]/div[text()="' + name + '"]/../div[text()="' + stock + '"]/..'));
   }
 
-  public clickEditOnFruit(name : string){
+  public async clickEditOnFruit(name : string) : Promise<void>{
     element(by.xpath('//div[@ng-repeat="fruit in fruits"]/div[text()="' + name + '"]/..//a[@class="btn" and text() ="Edit"]')).click();
   }
 
-  public clickRemoveOnFruit(name : string) {
+  public async clickRemoveOnFruit(name : string) : Promise<void> {
     element(by.xpath('//div[@ng-repeat="fruit in fruits"]/div[text()="' + name + '"]/..//a[@class="btn" and text() ="Remove"]')).click();
   }
 }

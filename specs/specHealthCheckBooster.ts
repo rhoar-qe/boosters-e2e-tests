@@ -28,6 +28,6 @@ describe('Health check booster page', () => {
     healthCheckPage.clickStopService();
     let name = HealthCheck.GREETINGS_DEFAULT_NAME;
     let EC = protractor.ExpectedConditions;
-    browser.wait(EC.textToBePresentInElement(healthCheckPage.getGreetingElement(),"Hello, " + name),50000);
+    browser.wait(EC.textToBePresentInElement(healthCheckPage.getGreetingElement(),"Hello, " + name),80000);
   });
 });

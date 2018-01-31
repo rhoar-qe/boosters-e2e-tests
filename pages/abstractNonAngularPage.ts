@@ -1,7 +1,7 @@
 import {browser} from 'protractor';
-import {BoosterPage} from './boosterPage'
+import {AbstractAngularPage} from './abstractAngularPage'
 
-export abstract class NonAngluarBoosterPage extends BoosterPage{
+export abstract class AbstractNonAngularPage extends AbstractAngularPage{
 
   public constructor(url : string){
     super(url);

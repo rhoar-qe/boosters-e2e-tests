@@ -1,7 +1,7 @@
 import {browser, element, by, protractor, ElementFinder} from 'protractor';
-import {NonAngluarBoosterPage} from './nonAngularBoosterPage';
+import {AbstractNonAngularPage} from '../abstractNonAngularPage';
 
-export class HttpPage extends NonAngluarBoosterPage {
+export class HttpPage extends AbstractNonAngularPage {
   private nameInput = element(by.id('name'));
   private invokeButton = element(by.id('invoke'));
   private greetingResult = element(by.id('greeting-result'));

@@ -11,13 +11,13 @@ export class SecuredHttpPage extends HttpPage  {
     super.setGreetingElement(element(by.id('result')));
   }
 
-  public clickLogin() : SecuredSignOnPage {
-    this.loginButton.click();
+  public async clickLogin() : Promise<SecuredSignOnPage> {
+    await this.loginButton.click();
     return new SecuredSignOnPage();
   }
 
-  public clickLogout() {
-    this.logoutButton.click();
+  public async clickLogout() : Promise<void> {
+    return this.logoutButton.click();
   }
 
 }

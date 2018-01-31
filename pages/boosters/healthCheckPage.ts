@@ -9,8 +9,8 @@ export class HealthCheck extends HttpPage  {
     super(browser.params.url.boosters.healthCheck);
   }
 
-  public clickStopService() {
-    this.stopService.click();
+  public async clickStopService() : Promise<void> {
+    return this.stopService.click();
   }
 
 }

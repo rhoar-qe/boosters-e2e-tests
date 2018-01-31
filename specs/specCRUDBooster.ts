@@ -9,7 +9,8 @@ describe('CRUD booster page', () => {
   it('Set empty name', () => {
     let crudPage = new CrudPage();
     crudPage.get();
-    crudPage.clearAllInputs();
+    crudPage.clearFruitName();
+    crudPage.clearFruitStock();
     crudPage.setFruitName("");
     crudPage.clickSaveChanges();
     browser.wait(protractor.ExpectedConditions.alertIsPresent(),1000);
@@ -25,7 +26,8 @@ describe('CRUD booster page', () => {
   xit('Set empty stock', () => {
     let crudPage = new CrudPage();
     crudPage.get();
-    crudPage.clearAllInputs();
+    crudPage.clearFruitName();
+    crudPage.clearFruitStock();
     crudPage.setFruitName("name");
     crudPage.setFruitStock("");
     crudPage.clickSaveChanges();
@@ -38,7 +40,8 @@ describe('CRUD booster page', () => {
   it('Set empty stock and name', () => {
     let crudPage = new CrudPage();
     crudPage.get();
-    crudPage.clearAllInputs();
+    crudPage.clearFruitName();
+    crudPage.clearFruitStock();
     crudPage.setFruitName("");
     crudPage.setFruitStock("");
     crudPage.clickSaveChanges();
@@ -62,33 +65,39 @@ describe('CRUD booster page', () => {
     crudPage.get();
     let name = 'Peach';
     let stock = '100';
-    crudPage.clearAllInputs();
+    crudPage.clearFruitName();
+    crudPage.clearFruitStock();
     crudPage.setFruitName(name);
     crudPage.setFruitStock(stock);
     crudPage.clickSaveChanges();
-    crudPage.isFruitInList(name,stock);
-
+    let EC = protractor.ExpectedConditions;
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name,stock)));
+    crudPage.get();
 
     let newStock = '10';
     crudPage.clickEditOnFruit(name);
     crudPage.clearFruitStock();
     crudPage.setFruitStock(newStock);
     crudPage.clickSaveChanges();
-    crudPage.isFruitInList(name,newStock);
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name,newStock)));
+    crudPage.get();
 
     let newName = 'Blackberry'
     crudPage.clickEditOnFruit(name);
     crudPage.clearFruitName();
     crudPage.setFruitName(newName);
     crudPage.clickSaveChanges();
-    crudPage.isFruitInList(newName,newStock);
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(newName,newStock)));
+    crudPage.get();
 
     crudPage.clickEditOnFruit(newName);
-    crudPage.clearAllInputs();
+    crudPage.clearFruitName();
+    crudPage.clearFruitStock();
     crudPage.setFruitName(name);
     crudPage.setFruitStock(stock);
     crudPage.clickSaveChanges();
-    crudPage.isFruitInList(name,stock);
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name,stock)));
+    crudPage.get();
 
     crudPage.clickRemoveOnFruit(name);
 

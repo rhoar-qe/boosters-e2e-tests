@@ -1,7 +1,6 @@
 import {SecuredHttpPage,SecuredSignOnPage} from '../pages';
 import {browser,protractor} from 'protractor';
 
-
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('Secured HTTP booster page', () => {
   it('Greetings test with name without login', () => {
@@ -27,31 +26,46 @@ describe('Secured HTTP booster page', () => {
     alert.accept();
   });
 
-  it('Greetings test with name with login', () => {
+  it('Greetings test with name with login', async () => {
     let name : string = 'Julie';
     let securedHttpBoosterPage = new SecuredHttpPage();
-    securedHttpBoosterPage.get();
-    let logInPage = securedHttpBoosterPage.clickLogin();
-    logInPage.setUserNameAndPassword(SecuredSignOnPage.USERNAME,SecuredSignOnPage.PASSWORD);
-    securedHttpBoosterPage = logInPage.clickLogin();
+    await securedHttpBoosterPage.get();
+    let logInPage = await securedHttpBoosterPage.clickLogin();
+    await logInPage.setUserName(SecuredSignOnPage.USERNAME)
+    await logInPage.setPassword(SecuredSignOnPage.PASSWORD);
+    securedHttpBoosterPage = await logInPage.clickLogin();
     let EC = protractor.ExpectedConditions;
-    securedHttpBoosterPage.setName(name);
-    securedHttpBoosterPage.clickInvoke();
-    expect(securedHttpBoosterPage.getGreetingElement().getText()).toContain('Hello, ' + name);
+    await securedHttpBoosterPage.setName(name);
+    await securedHttpBoosterPage.clickInvoke();
+    await expect(securedHttpBoosterPage.getGreetingElement().getText()).toContain('Hello, ' + name);
     securedHttpBoosterPage.clickLogout();
   });
 
   it('The default greeting with login', async () => {
     let securedHttpBoosterPage = new SecuredHttpPage();
-    securedHttpBoosterPage.get();
-    securedHttpBoosterPage.clickLogout();
+    await securedHttpBoosterPage.get();
+    await securedHttpBoosterPage.clickLogout();
     let name = SecuredHttpPage.GREETINGS_DEFAULT_NAME;
-    let logInPage = securedHttpBoosterPage.clickLogin();
-    logInPage.setUserNameAndPassword(SecuredSignOnPage.USERNAME,SecuredSignOnPage.PASSWORD);
-    securedHttpBoosterPage = logInPage.clickLogin();
-    securedHttpBoosterPage.clickInvoke();
+    let logInPage = await securedHttpBoosterPage.clickLogin();
+    await logInPage.setUserName(SecuredSignOnPage.USERNAME)
+    await logInPage.setPassword(SecuredSignOnPage.PASSWORD);
+    securedHttpBoosterPage = await logInPage.clickLogin();
+    await securedHttpBoosterPage.clickInvoke();
     let EC = protractor.ExpectedConditions;
     await EC.textToBePresentInElement(securedHttpBoosterPage.getGreetingElement(),"Hello, " + name);
+  });
+
+  it('Try to login with bad username and password', async () => {
+    let securedHttpBoosterPage = new SecuredHttpPage();
+    await securedHttpBoosterPage.get();
+    await securedHttpBoosterPage.clickLogout();
+    let name = SecuredHttpPage.GREETINGS_DEFAULT_NAME;
+    let logInPage = await securedHttpBoosterPage.clickLogin();
+    await logInPage.setUserName(SecuredSignOnPage.USERNAME+'a')
+    await logInPage.setPassword(SecuredSignOnPage.PASSWORD);
+    await logInPage.clickLogin();
+    let EC = protractor.ExpectedConditions;
+    await browser.wait(EC.textToBePresentInElement(logInPage.getError(),'Invalid username or password.'),1000);
   });
 
 });
