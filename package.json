@@ -7,12 +7,10 @@
     "rhoar",
     "tests"
   ],
-  "contributors": [
-    {
-      "name": "Adam Koniar",
-      "email": "akoniar@redhat.com"
-    }
-  ],
+  "contributors": [{
+    "name": "Adam Koniar",
+    "email": "akoniar@redhat.com"
+  }],
   "homepage": "https://gitlab.cee.redhat.com/akoniar/rhoar-protractor-e2e-tests",
   "license": "Apache-2.0",
   "scripts": {

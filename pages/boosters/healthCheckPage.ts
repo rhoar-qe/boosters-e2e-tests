@@ -1,15 +1,15 @@
-import {browser, element, by, protractor, ElementFinder} from 'protractor';
-import {HttpPage} from './';
+import { browser, element, by, protractor, ElementFinder } from 'protractor';
+import { HttpPage } from './';
 
-export class HealthCheck extends HttpPage  {
+export class HealthCheck extends HttpPage {
 
   private stopService = element(by.id('stop'));
 
-  public constructor () {
+  public constructor() {
     super(browser.params.url.boosters.healthCheck);
   }
 
-  public async clickStopService() : Promise<void> {
+  public async clickStopService(): Promise<void> {
     return this.stopService.click();
   }
 

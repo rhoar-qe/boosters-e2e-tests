@@ -1,5 +1,5 @@
-import {CrudPage} from '../pages';
-import {browser,protractor} from 'protractor';
+import { CrudPage } from '../pages';
+import { browser, protractor } from 'protractor';
 
 
 
@@ -13,7 +13,7 @@ describe('CRUD booster page', () => {
     crudPage.clearFruitStock();
     crudPage.setFruitName("");
     crudPage.clickSaveChanges();
-    browser.wait(protractor.ExpectedConditions.alertIsPresent(),1000);
+    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);
     let alert = browser.switchTo().alert();
     expect(alert.getText()).toEqual('The name must not be null or empty');
     alert.accept();
@@ -31,7 +31,7 @@ describe('CRUD booster page', () => {
     crudPage.setFruitName("name");
     crudPage.setFruitStock("");
     crudPage.clickSaveChanges();
-    browser.wait(protractor.ExpectedConditions.alertIsPresent(),1000);
+    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);
     let alert = browser.switchTo().alert();
     expect(alert.getText()).toEqual('The stock must not be null or empty');
     alert.accept();
@@ -45,7 +45,7 @@ describe('CRUD booster page', () => {
     crudPage.setFruitName("");
     crudPage.setFruitStock("");
     crudPage.clickSaveChanges();
-    browser.wait(protractor.ExpectedConditions.alertIsPresent(),1000);
+    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);
     let alert = browser.switchTo().alert();
     expect(alert.getText()).toEqual('The name must not be null or empty');
     alert.accept();
@@ -57,7 +57,7 @@ describe('CRUD booster page', () => {
     let prewStockValue = await crudPage.getFruitStockValue();
     crudPage.setFruitStock("abcd");
     let EC = protractor.ExpectedConditions;
-    expect(EC.textToBePresentInElementValue(crudPage.getFruitStockElement(),prewStockValue.toString()));
+    expect(EC.textToBePresentInElementValue(crudPage.getFruitStockElement(), prewStockValue.toString()));
   });
 
   it('Create edit and delete fruit with name', () => {
@@ -71,7 +71,7 @@ describe('CRUD booster page', () => {
     crudPage.setFruitStock(stock);
     crudPage.clickSaveChanges();
     let EC = protractor.ExpectedConditions;
-    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name,stock)));
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name, stock)));
     crudPage.get();
 
     let newStock = '10';
@@ -79,7 +79,7 @@ describe('CRUD booster page', () => {
     crudPage.clearFruitStock();
     crudPage.setFruitStock(newStock);
     crudPage.clickSaveChanges();
-    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name,newStock)));
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name, newStock)));
     crudPage.get();
 
     let newName = 'Blackberry'
@@ -87,7 +87,7 @@ describe('CRUD booster page', () => {
     crudPage.clearFruitName();
     crudPage.setFruitName(newName);
     crudPage.clickSaveChanges();
-    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(newName,newStock)));
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(newName, newStock)));
     crudPage.get();
 
     crudPage.clickEditOnFruit(newName);
@@ -96,7 +96,7 @@ describe('CRUD booster page', () => {
     crudPage.setFruitName(name);
     crudPage.setFruitStock(stock);
     crudPage.clickSaveChanges();
-    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name,stock)));
+    browser.wait(EC.visibilityOf(crudPage.getElementByNameAndStock(name, stock)));
     crudPage.get();
 
     crudPage.clickRemoveOnFruit(name);

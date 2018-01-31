@@ -1,5 +1,5 @@
-import {browser, element, by, protractor, ElementFinder} from 'protractor';
-import {SecuredHttpPage} from './';
+import { browser, element, by, protractor, ElementFinder } from 'protractor';
+import { SecuredHttpPage } from './';
 import * as fs from 'fs';
 
 export class SecuredSignOnPage {
@@ -13,21 +13,21 @@ export class SecuredSignOnPage {
   public static readonly USERNAME = browser.params.values.boosters.securedHttp.username;
   public static readonly PASSWORD = browser.params.values.boosters.securedHttp.password;
 
-  public async setUserName (username : string) : Promise<void> {
+  public async setUserName(username: string): Promise<void> {
     return this.username.sendKeys(username);
   }
 
-  public async setPassword (password : string) : Promise<void> {
+  public async setPassword(password: string): Promise<void> {
     return this.password.sendKeys(password);
   }
 
-  public async clickLogin() : Promise<SecuredHttpPage> {
+  public async clickLogin(): Promise<SecuredHttpPage> {
     await this.logInButton.click();
     let EC = protractor.ExpectedConditions;
     return new SecuredHttpPage();
   }
 
-  public getError() : ElementFinder{
+  public getError(): ElementFinder {
     return this.errorMessage;
   }
 

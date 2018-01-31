@@ -1,5 +1,5 @@
-import {browser, element, by, protractor, ElementFinder} from 'protractor';
-import {AbstractNonAngularPage} from '../abstractNonAngularPage';
+import { browser, element, by, protractor, ElementFinder } from 'protractor';
+import { AbstractNonAngularPage } from '../abstractNonAngularPage';
 
 export class HttpPage extends AbstractNonAngularPage {
   private nameInput = element(by.id('name'));
@@ -8,11 +8,11 @@ export class HttpPage extends AbstractNonAngularPage {
 
   public static readonly GREETINGS_DEFAULT_NAME = "World";
 
-  public constructor(url : string = browser.params.url.boosters.http){
+  public constructor(url: string = browser.params.url.boosters.http) {
     super(url);
   }
 
-  public setName(name: string) : any {
+  public setName(name: string): any {
     return this.nameInput.sendKeys(name);
   }
 
@@ -20,7 +20,7 @@ export class HttpPage extends AbstractNonAngularPage {
     return this.invokeButton.click();
   }
 
-  protected setGreetingElement(greetingResult : ElementFinder){
+  protected setGreetingElement(greetingResult: ElementFinder) {
     this.greetingResult = greetingResult;
   }
 

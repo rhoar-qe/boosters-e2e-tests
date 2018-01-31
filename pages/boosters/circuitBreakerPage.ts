@@ -1,5 +1,5 @@
-import {browser, element, by, protractor, ElementFinder} from 'protractor';
-import {AbstractNonAngularPage} from '../abstractNonAngularPage';
+import { browser, element, by, protractor, ElementFinder } from 'protractor';
+import { AbstractNonAngularPage } from '../abstractNonAngularPage';
 
 export class CircuitBreakerPage extends AbstractNonAngularPage {
 
@@ -8,23 +8,23 @@ export class CircuitBreakerPage extends AbstractNonAngularPage {
   private nameServiceState = element(by.xpath('//p[@id="name-state"]//span[@id="svc-state"]'));
   private greetingResult = element(by.id('greeting-result'));
 
-  public constructor(){
+  public constructor() {
     super(browser.params.url.boosters.circuitBreaker);
   }
 
-  public async clickToggle() : Promise<void> {
+  public async clickToggle(): Promise<void> {
     return this.toggleButton.click();
   }
 
-  public async clickInvoke() : Promise<void>{
+  public async clickInvoke(): Promise<void> {
     return this.invokeButton.click();
   }
 
-  public getNameServiceStateElement() : ElementFinder {
+  public getNameServiceStateElement(): ElementFinder {
     return this.nameServiceState;
   }
 
-  public getGreetingElement() : ElementFinder {
+  public getGreetingElement(): ElementFinder {
     return this.greetingResult;
   }
 

@@ -16,6 +16,7 @@ export CRUD_BOOSTER_URL="url for crud booster"
 export CIRCUIT_BREAKER_BOOSTER_URL="url for circuit breaker booster"
 export CONFIG_MAP_BOOSTER_URL="url for config map booster"
 export HEALTH_CHECK_BOOSTER_URL="url for health check booster"
+export SECURED_HTTP_BOOSTER_URL="url for secured http booster"
 
 export CONFIG_MAP_BOOSTER_VALUE="Hello, %s from a ConfigMap !"
 
