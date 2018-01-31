@@ -8,11 +8,11 @@ export class SecuredHttpPage extends HttpPage  {
 
   public constructor () {
     super(browser.params.url.boosters.securedHttp);
+    super.setGreetingElement(element(by.id('result')));
   }
 
   public clickLogin() : SecuredSignOnPage {
     this.loginButton.click();
-    browser.getCurrentUrl().then(url => console.log(url));
     return new SecuredSignOnPage();
   }
 

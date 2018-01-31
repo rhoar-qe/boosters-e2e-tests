@@ -25,13 +25,7 @@ export class SecuredSignOnPage {
   }
 
   public clickLogin() : SecuredHttpPage {
-    this.logInButton.click().then(() => {
-      browser.takeScreenshot().then(function(png){
-          var stream = fs.createWriteStream('a.png');
-          stream.write(new Buffer(png, 'base64'));
-          stream.end();
-      });
-    });
+    this.logInButton.click();
     return new SecuredHttpPage();
   }
 

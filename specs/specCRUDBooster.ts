@@ -6,7 +6,7 @@ import {browser,protractor} from 'protractor';
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('CRUD booster page', () => {
 
-  xit('Set empty name', () => {
+  it('Set empty name', () => {
     let crudPage = new CrudPage();
     crudPage.get();
     crudPage.clearAllInputs();
@@ -35,7 +35,7 @@ describe('CRUD booster page', () => {
     alert.accept();
   });
 
-  xit('Set empty stock and name', () => {
+  it('Set empty stock and name', () => {
     let crudPage = new CrudPage();
     crudPage.get();
     crudPage.clearAllInputs();
@@ -48,7 +48,7 @@ describe('CRUD booster page', () => {
     alert.accept();
   });
 
-  xit('Set some string to stock', async () => {
+  it('Set some string to stock', async () => {
     let crudPage = new CrudPage();
     crudPage.get();
     let prewStockValue = await crudPage.getFruitStockValue();
@@ -57,7 +57,7 @@ describe('CRUD booster page', () => {
     expect(EC.textToBePresentInElementValue(crudPage.getFruitStockElement(),prewStockValue.toString()));
   });
 
-  xit('Create edit and delete fruit with name', () => {
+  it('Create edit and delete fruit with name', () => {
     let crudPage = new CrudPage();
     crudPage.get();
     let name = 'Peach';

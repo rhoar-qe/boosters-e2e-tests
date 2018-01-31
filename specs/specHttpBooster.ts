@@ -3,7 +3,7 @@ import {browser,protractor} from 'protractor';
 
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('HTTP booster page', () => {
-  xit('Greetings test with name', () => {
+  it('Greetings test with name', () => {
     let name : string = 'Julie';
     let httpBoosterPage = new HttpPage();
     httpBoosterPage.get();

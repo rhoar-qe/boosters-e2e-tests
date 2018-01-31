@@ -20,6 +20,10 @@ export class HttpPage extends NonAngluarBoosterPage {
     return this.invokeButton.click();
   }
 
+  protected setGreetingElement(greetingResult : ElementFinder){
+    this.greetingResult = greetingResult;
+  }
+
   public getGreetingElement(): ElementFinder {
     return this.greetingResult;
   }

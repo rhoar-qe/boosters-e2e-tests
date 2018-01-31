@@ -3,7 +3,7 @@ import {browser,protractor} from 'protractor';
 
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('Health check booster page', () => {
-  xit('Greetings test with name', () => {
+  it('Greetings test with name', () => {
     let name : string = 'Julie';
     let healthCheckPage = new HealthCheck();
     healthCheckPage.get();
@@ -13,7 +13,7 @@ describe('Health check booster page', () => {
     browser.wait(EC.textToBePresentInElement(healthCheckPage.getGreetingElement(),"Hello, " + name),1000);
   });
 
-  xit('Test the default greeting', () => {
+  it('Test the default greeting', () => {
     let healthCheckPage = new HealthCheck();
     healthCheckPage.get();
     let name = HealthCheck.GREETINGS_DEFAULT_NAME;
@@ -22,12 +22,12 @@ describe('Health check booster page', () => {
     browser.wait(EC.textToBePresentInElement(healthCheckPage.getGreetingElement(),"Hello, " + name),1000);
   });
 
-  xit('Test the stop service', () => {
+  it('Test the stop service', () => {
     let healthCheckPage = new HealthCheck();
     healthCheckPage.get();
     healthCheckPage.clickStopService();
     let name = HealthCheck.GREETINGS_DEFAULT_NAME;
     let EC = protractor.ExpectedConditions;
-    browser.wait(EC.textToBePresentInElement(healthCheckPage.getGreetingElement(),"Hello, " + name),40000);
+    browser.wait(EC.textToBePresentInElement(healthCheckPage.getGreetingElement(),"Hello, " + name),50000);
   });
 });

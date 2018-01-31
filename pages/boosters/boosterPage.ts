@@ -5,7 +5,6 @@ export abstract class BoosterPage{
     this.URL = url;
   }
   public get(){
-    console.log('go to ' + this.URL);
     return browser.get(this.URL);
   }
 }
