@@ -8,6 +8,6 @@ export class OpenShiftMissionPage extends MissionPage {
   }
 
   selectSecuredHTTP(): void {
-      throw new Error("This mission not suport yet");
+      throw new Error("This mission not support yet");
   }
 }

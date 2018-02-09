@@ -1,12 +1,10 @@
 import { browser, element, by, protractor, ElementFinder } from 'protractor';
-import { AbstractNonAngularPage } from '../abstractNonAngularPage';
+import { AbstractGreetingServicePage } from './abstractGreetingServicePage';
 
-export class CircuitBreakerPage extends AbstractNonAngularPage {
+export class CircuitBreakerPage extends AbstractGreetingServicePage {
 
-  private invokeButton = element(by.id('invoke'));
   private toggleButton = element(by.id('toggle'));
   private nameServiceState = element(by.xpath('//p[@id="name-state"]//span[@id="svc-state"]'));
-  private greetingResult = element(by.id('greeting-result'));
 
   public constructor() {
     super(browser.params.url.boosters.circuitBreaker);
@@ -16,16 +14,8 @@ export class CircuitBreakerPage extends AbstractNonAngularPage {
     return this.toggleButton.click();
   }
 
-  public async clickInvoke(): Promise<void> {
-    return this.invokeButton.click();
-  }
-
   public getNameServiceStateElement(): ElementFinder {
     return this.nameServiceState;
-  }
-
-  public getGreetingElement(): ElementFinder {
-    return this.greetingResult;
   }
 
 }
@@ -36,6 +26,6 @@ export enum NameServiceState {
 }
 
 export enum GreetingResult {
-  Failure = 'Fallback',
-  Working = 'World!'
+  Failure = '{"content":"Hello, Fallback!"}',
+  Working = '{"content":"Hello, World!"}'
 }

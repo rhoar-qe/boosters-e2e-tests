@@ -58,7 +58,7 @@ export abstract class RuntimePage  {
 
 export enum Runtime {
   Vertx = 'Eclipse Vert.x',
-  //NodeJS = 'Node.js', TODO implenet new page object for NodeJS projectInfo
+  //NodeJS = 'Node.js', TODO implement new page object for NodeJS projectInfo
   SpringBoot = 'Spring Boot',
   Swarm = 'WildFly Swarm'
 }

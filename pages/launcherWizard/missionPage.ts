@@ -13,7 +13,7 @@ export abstract class MissionPage  {
 
   selectedMission = Mission.CRUD;
 
-  getSelectedMisson(): Mission {
+  getSelectedMission(): Mission {
     return this.selectedMission;
   }
 

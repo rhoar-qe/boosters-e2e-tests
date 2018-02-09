@@ -5,12 +5,12 @@ export class CrudPage extends AbstractAngularPage {
 
   private addEditFruitName = element(by.xpath('//input[@ng-model="form.name"]'));
   private addEditFruitStock = element(by.xpath('//input[@ng-model="form.stock"]'));
-  private saveChages = element(by.xpath('//input[@type="submit"]'))
+  private saveChanges = element(by.xpath('//input[@type="submit"]'))
 
   public constructor() {
     super(browser.params.url.boosters.crud);
   }
-
+  
   public async clearFruitName(): Promise<void> {
     this.addEditFruitName.clear();
   }
@@ -36,7 +36,7 @@ export class CrudPage extends AbstractAngularPage {
   }
 
   public async clickSaveChanges(): Promise<void> {
-    return this.saveChages.click();
+    return this.saveChanges.click();
   }
 
   public getElementByNameAndStock(name: string, stock: string): ElementFinder {

@@ -23,7 +23,7 @@ export class LauncherUtil {
   private static getDashboardAndClickLaunch() : Pages.DeploymentTypePage{
       let dashboardPage = new Pages.DashboardPage();
       dashboardPage.get();
-      return dashboardPage.clickLauch();
+      return dashboardPage.clickLaunch();
   }
 
   private static createProjectName(mission: Pages.Mission, runtime: Pages.Runtime, version: Pages.ProjectVersion): string {

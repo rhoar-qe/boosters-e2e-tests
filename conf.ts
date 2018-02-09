@@ -43,4 +43,5 @@ export let config: Config = {
     defaultTimeoutInterval: 10000000
   },
   resultJsonOutputFile: './result.json',
+  restartBrowserBetweenTests: true
 };
