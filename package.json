@@ -13,7 +13,7 @@
       "email": "akoniar@redhat.com"
     }
   ],
-  "homepage": "https://gitlab.cee.redhat.com/akoniar/rhoar-protractor-e2e-tests",
+  "homepage": "https://github.com/rhoar-ci/e2e-tests",
   "license": "Apache-2.0",
   "scripts": {
     "test": "tsc && protractor js-files/conf.js"
@@ -42,10 +42,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.cee.redhat.com:akoniar/rhoar-protractor-e2e-tests.git"
+    "url": "git@github.com:rhoar-ci/e2e-tests.git"
   },
   "bugs": {
-    "url": "https://gitlab.cee.redhat.com/akoniar/rhoar-protractor-e2e-tests/issues"
+    "url": "https://github.com/rhoar-ci/e2e-tests/issues"
   },
   "engines": {
     "node": ">= 6.10.3",
