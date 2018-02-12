@@ -15,11 +15,10 @@ export let config: Config = {
   capabilities: {
     browserName: 'chrome'
   },
-  specs: ['specs/spec*Booster.js'],
+  specs: ['specs/spec*.js'],
   seleniumAddress: 'http://localhost:4444/wd/hub',
   params: {
     url: {
-      launcher: process.env.LAUNCHER_URL,
       boosters: {
         http: process.env.HTTP_BOOSTER_URL,
         crud: process.env.CRUD_BOOSTER_URL,
@@ -33,7 +32,7 @@ export let config: Config = {
       boosters: {
         configMap: process.env.CONFIG_MAP_BOOSTER_VALUE,
         securedHttp: {
-          username: process.env.SECURED_HTTP_BOOSTER_USERMAME,
+          username: process.env.SECURED_HTTP_BOOSTER_USERNAME,
           password: process.env.SECURED_HTTP_BOOSTER_PASSWORD,
         }
       }
