@@ -1,5 +1,5 @@
 {
-  "name": "rhoar-protractor-e2e",
+  "name": "rhoar-e2e-test",
   "version": "0.0.0-development",
   "description": "End to End tests for rhoar",
   "keywords": [
