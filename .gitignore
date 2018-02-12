@@ -2,3 +2,7 @@
 /js-files
 #Installed modules
 /node_modules
+#result of tests
+result.json
+
+package-lock.json

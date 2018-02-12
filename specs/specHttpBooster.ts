@@ -1,13 +1,24 @@
-import {HttpBoosterPage} from '../pages/httpBoosterPage';
-import {browser,protractor} from 'protractor';
+import { HttpPage } from '../pages';
+import { browser, protractor } from 'protractor';
 
 // The jasmine typings are brought in via DefinitelyTyped ambient typings.
 describe('HTTP booster page', () => {
-  it('Should greet the named user', () => {
-    let httpBoosterPage = new HttpBoosterPage();
+  it('Greetings test with name', () => {
+    let name: string = 'Julie';
+    let httpBoosterPage = new HttpPage();
     httpBoosterPage.get();
-    httpBoosterPage.setName('Julie');
+    httpBoosterPage.setName(name);
     httpBoosterPage.clickInvoke();
-    browser.wait(protractor.ExpectedConditions.textToBePresentInElement(httpBoosterPage.getGreeting(),"Hello, Julie"),1000);
+    let EC = protractor.ExpectedConditions;
+    browser.wait(EC.textToBePresentInElement(httpBoosterPage.getGreetingElement(), "Hello, " + name), 1000);
+  });
+
+  it('Test the default greeting', () => {
+    let httpBoosterPage = new HttpPage();
+    let name = HttpPage.GREETINGS_DEFAULT_NAME;
+    httpBoosterPage.get();
+    httpBoosterPage.clickInvoke();
+    let EC = protractor.ExpectedConditions;
+    browser.wait(EC.textToBePresentInElement(httpBoosterPage.getGreetingElement(), "Hello, " + name), 1000);
   });
 });
