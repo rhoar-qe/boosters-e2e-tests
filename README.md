@@ -9,7 +9,7 @@ $ webdriver-manager update
 $ webdriver-manager start
 ```
 ## Before Test
-Is necessary set URL address for boosters and default value of config map
+Is necessary set up URL address for boosters, default value of config map and login credentials for secured booster
 ```
 export HTTP_BOOSTER_URL="url for http booster"
 export CRUD_BOOSTER_URL="url for crud booster"
@@ -20,6 +20,8 @@ export SECURED_HTTP_BOOSTER_URL="url for secured http booster"
 
 export CONFIG_MAP_BOOSTER_VALUE="Hello, %s from a ConfigMap !"
 
+export SECURED_HTTP_BOOSTER_PASSWORD=password
+export SECURED_HTTP_BOOSTER_USERNAME=alice
 ```
 
 ## Run the test
