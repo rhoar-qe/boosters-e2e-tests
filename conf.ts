@@ -16,6 +16,14 @@ export let config: Config = {
     browserName: 'chrome'
   },
   specs: ['specs/spec*.js'],
+  suites: {
+    http: ['specs/specHttpBooster.js'],
+    crud: ['specs/specCRUDBooster.js'],
+    circuitBreaker: ['specs/specCircuitBreakerBooster.js'],
+    configMap: ['specs/specConfigMapBooster.js'],
+    healthCheck: ['specs/specHealthCheckBooster.js'],
+    securedHttp: ['specs/specSecuredHttpBooster.js'],
+  },
   seleniumAddress: 'http://localhost:4444/wd/hub',
   params: {
     url: {
