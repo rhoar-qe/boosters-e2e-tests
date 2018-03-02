@@ -16,7 +16,14 @@
   "homepage": "https://github.com/rhoar-ci/e2e-tests",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "tsc && protractor js-files/conf.js"
+    "test": "tsc && protractor js-files/conf.js",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
   },
   "main": "index.js",
   "dependencies": {
@@ -38,7 +45,8 @@
     "ts-helpers": "1.1.2",
     "tslint": "5.8.0",
     "tslint-loader": "^3.5.0",
-    "typescript": "2.5.3"
+    "typescript": "~2.6.1",
+    "gts": "^0.5.3"
   },
   "repository": {
     "type": "git",
