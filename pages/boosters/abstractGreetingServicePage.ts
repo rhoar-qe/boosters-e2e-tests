@@ -1,18 +1,19 @@
-import { browser, element, by, protractor, ElementFinder } from 'protractor';
-import { AbstractNonAngularPage } from '../abstractNonAngularPage';
+import {browser, by, element, ElementFinder, protractor} from 'protractor';
 
-export abstract class AbstractGreetingServicePage extends AbstractNonAngularPage {
+import {AbstractNonAngularPage} from '../abstractNonAngularPage';
 
+export abstract class AbstractGreetingServicePage extends
+    AbstractNonAngularPage {
   private invokeButton = element(by.id('invoke'));
   private greetingResult = element(by.id('greeting-result'));
 
-  public static readonly GREETINGS_DEFAULT_NAME = "World";
+  static readonly GREETINGS_DEFAULT_NAME = 'World';
 
-  public constructor(url: string) {
+  constructor(url: string) {
     super(url);
   }
 
-  public clickInvoke() {
+  clickInvoke() {
     return this.invokeButton.click();
   }
 
@@ -20,7 +21,7 @@ export abstract class AbstractGreetingServicePage extends AbstractNonAngularPage
     this.greetingResult = greetingResult;
   }
 
-  public getGreetingElement(): ElementFinder {
+  getGreetingElement(): ElementFinder {
     return this.greetingResult;
   }
 }

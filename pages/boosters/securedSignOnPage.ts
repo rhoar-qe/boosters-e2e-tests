@@ -1,34 +1,36 @@
-import { browser, element, by, protractor, ElementFinder } from 'protractor';
-import { SecuredHttpPage } from './';
 import * as fs from 'fs';
+import {browser, by, element, ElementFinder, protractor} from 'protractor';
+
+import {SecuredHttpPage} from './';
 
 export class SecuredSignOnPage {
-
   private username = element(by.id('username'));
   private password = element(by.id('password'));
   private logInButton = element(by.id('kc-login'));
 
-  private errorMessage = element(by.xpath('//div[@class="alert alert-error"]/span[@class="kc-feedback-text"]'));
+  private errorMessage = element(by.xpath(
+      '//div[@class="alert alert-error"]/span[@class="kc-feedback-text"]'));
 
-  public static readonly USERNAME = browser.params.values.boosters.securedHttp.username;
-  public static readonly PASSWORD = browser.params.values.boosters.securedHttp.password;
+  static readonly USERNAME =
+      browser.params.values.boosters.securedHttp.username;
+  static readonly PASSWORD =
+      browser.params.values.boosters.securedHttp.password;
 
-  public async setUserName(username: string): Promise<void> {
+  async setUserName(username: string): Promise<void> {
     return this.username.sendKeys(username);
   }
 
-  public async setPassword(password: string): Promise<void> {
+  async setPassword(password: string): Promise<void> {
     return this.password.sendKeys(password);
   }
 
-  public async clickLogin(): Promise<SecuredHttpPage> {
+  async clickLogin(): Promise<SecuredHttpPage> {
     await this.logInButton.click();
-    let EC = protractor.ExpectedConditions;
+    const EC = protractor.ExpectedConditions;
     return new SecuredHttpPage();
   }
 
-  public getError(): ElementFinder {
+  getError(): ElementFinder {
     return this.errorMessage;
   }
-
 }

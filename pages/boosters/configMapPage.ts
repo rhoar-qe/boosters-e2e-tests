@@ -1,28 +1,28 @@
-import { browser, element, by, protractor, ElementFinder } from 'protractor';
-import { HttpPage } from './';
+import {browser, by, element, ElementFinder, protractor} from 'protractor';
+
+import {HttpPage} from './';
 
 export class ConfigMapPage extends HttpPage {
-
   private configMapValue;
 
-  public constructor(value: string = ConfigMapPage.getDefaultConfigMapValue()) {
+  constructor(value: string = ConfigMapPage.getDefaultConfigMapValue()) {
     super(browser.params.url.boosters.configMap);
     this.setConfigMapValue(value);
   }
 
-  public static getDefaultConfigMapValue(): string {
+  static getDefaultConfigMapValue(): string {
     return browser.params.values.boosters.configMap;
   }
 
-  public setConfigMapValue(value: string) {
+  setConfigMapValue(value: string) {
     this.configMapValue = value;
   }
 
-  public getConfigMapValue(): string {
+  getConfigMapValue(): string {
     return this.configMapValue;
   }
 
-  public getExceptedGreetingResult(name: string): string {
+  getExceptedGreetingResult(name: string): string {
     return this.configMapValue.replace('%s', name);
   }
 }
