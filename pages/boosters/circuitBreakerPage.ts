@@ -1,29 +1,28 @@
-import { browser, element, by, protractor, ElementFinder } from 'protractor';
-import { AbstractGreetingServicePage } from './abstractGreetingServicePage';
+import {browser, by, element, ElementFinder, protractor} from 'protractor';
+
+import {AbstractGreetingServicePage} from './abstractGreetingServicePage';
 
 export class CircuitBreakerPage extends AbstractGreetingServicePage {
-
   private toggleButton = element(by.id('toggle'));
   private nameServiceState = element(by.xpath('//div[@id="name-state"]//span'));
 
-  public constructor() {
+  constructor() {
     super(browser.params.url.boosters.circuitBreaker);
   }
 
-  public get() {
-    let parentGet = super.get();
+  get() {
+    const parentGet = super.get();
     browser.wait(this.nameServiceState.isPresent(), 5000);
     return parentGet;
   }
 
-  public async clickToggle(): Promise<void> {
+  async clickToggle(): Promise<void> {
     return this.toggleButton.click();
   }
 
-  public getNameServiceStateElement(): ElementFinder {
+  getNameServiceStateElement(): ElementFinder {
     return this.nameServiceState;
   }
-
 }
 
 export enum NameServiceState {

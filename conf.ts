@@ -8,13 +8,11 @@
 //
 // To run this example, first transpile it to javascript with `npm run tsc`,
 // then run `protractor confPageObjects.js`.
-import { Config } from 'protractor';
+import {Config} from 'protractor';
 
 export let config: Config = {
   framework: 'jasmine',
-  capabilities: {
-    browserName: 'chrome'
-  },
+  capabilities: {browserName: 'chrome'},
   specs: ['specs/spec*.js'],
   suites: {
     http: ['specs/specHttpBooster.js'],
@@ -46,9 +44,7 @@ export let config: Config = {
       }
     }
   },
-  jasmineNodeOpts: {
-    defaultTimeoutInterval: 10000000
-  },
+  jasmineNodeOpts: {defaultTimeoutInterval: 10000000},
   resultJsonOutputFile: './result.json',
   restartBrowserBetweenTests: true
 };
