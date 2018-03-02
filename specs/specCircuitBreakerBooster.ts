@@ -19,7 +19,7 @@ describe('Circuit breaker booster page', () => {
     let circuitBreakerPage = new CircuitBreakerPage();
     circuitBreakerPage.get();
     browser.wait(EC.textToBePresentInElement(circuitBreakerPage.getNameServiceStateElement(), NameServiceState.Working), 1000);
-    browser.wait(EC.textToBePresentInElement(circuitBreakerPage.getGreetingElement(), ""), 1000);
+    browser.wait(circuitBreakerPage.getGreetingElement().isPresent(), 1000);
     circuitBreakerPage.clickInvoke();
     browser.wait(EC.textToBePresentInElement(circuitBreakerPage.getGreetingElement(), GreetingResult.Working), 1000);
   });

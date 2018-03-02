@@ -9,10 +9,10 @@ export class CircuitBreakerPage extends AbstractGreetingServicePage {
   public constructor() {
     super(browser.params.url.boosters.circuitBreaker);
   }
-  
-  public get(){
+
+  public get() {
     let parentGet = super.get();
-    browser.wait(this.nameServiceState.isPresent(),5000);
+    browser.wait(this.nameServiceState.isPresent(), 5000);
     return parentGet;
   }
 
