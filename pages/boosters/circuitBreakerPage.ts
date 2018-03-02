@@ -4,10 +4,16 @@ import { AbstractGreetingServicePage } from './abstractGreetingServicePage';
 export class CircuitBreakerPage extends AbstractGreetingServicePage {
 
   private toggleButton = element(by.id('toggle'));
-  private nameServiceState = element(by.xpath('//p[@id="name-state"]//span[@id="svc-state"]'));
+  private nameServiceState = element(by.xpath('//div[@id="name-state"]//span'));
 
   public constructor() {
     super(browser.params.url.boosters.circuitBreaker);
+  }
+
+  public get() {
+    let parentGet = super.get();
+    browser.wait(this.nameServiceState.isPresent(), 5000);
+    return parentGet;
   }
 
   public async clickToggle(): Promise<void> {
@@ -21,11 +27,11 @@ export class CircuitBreakerPage extends AbstractGreetingServicePage {
 }
 
 export enum NameServiceState {
-  Failure = 'failure state',
-  Working = 'working state'
+  Failure = 'FAIL',
+  Working = 'OK'
 }
 
 export enum GreetingResult {
-  Failure = '{"content":"Hello, Fallback!"}',
-  Working = '{"content":"Hello, World!"}'
+  Failure = 'Hello, Fallback',
+  Working = 'Hello, World'
 }
