@@ -5,8 +5,6 @@ import {AbstractAngularPage} from '../abstractAngularPage';
 export class CrudPage extends AbstractAngularPage {
   private addEditFruitName =
       element(by.xpath('//input[@ng-model="form.name"]'));
-  private addEditFruitStock =
-      element(by.xpath('//input[@ng-model="form.stock"]'));
   private saveChanges = element(by.xpath('//input[@type="submit"]'));
 
   constructor() {
@@ -17,34 +15,17 @@ export class CrudPage extends AbstractAngularPage {
     this.addEditFruitName.clear();
   }
 
-  async clearFruitStock(): Promise<void> {
-    this.addEditFruitStock.clear();
-  }
-
   async setFruitName(name: string): Promise<void> {
     return this.addEditFruitName.sendKeys(name);
-  }
-
-  async setFruitStock(stock: string) {
-    return this.addEditFruitStock.sendKeys(stock);
-  }
-
-  async getFruitStockValue(): Promise<string> {
-    return this.addEditFruitStock.getAttribute('value');
-  }
-
-  getFruitStockElement(): ElementFinder {
-    return this.addEditFruitStock;
   }
 
   async clickSaveChanges(): Promise<void> {
     return this.saveChanges.click();
   }
 
-  getElementByNameAndStock(name: string, stock: string): ElementFinder {
+  getElementByName(name: string): ElementFinder {
     return element(by.xpath(
-        '//div[@ng-repeat="fruit in fruits"]/div[text()="' + name +
-        '"]/../div[text()="' + stock + '"]/..'));
+        '//div[@ng-repeat="fruit in fruits"]/div[text()="' + name + '"]'));
   }
 
   async clickEditOnFruit(name: string): Promise<void> {
