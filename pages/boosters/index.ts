@@ -1,5 +1,6 @@
 export * from './httpPage';
 export * from './crudPage';
+export * from './crudPageWithStock';
 export * from './circuitBreakerPage';
 export * from './configMapPage';
 export * from './healthCheckPage';

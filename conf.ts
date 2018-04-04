@@ -24,6 +24,7 @@ export let config: Config = {
   },
   seleniumAddress: 'http://localhost:4444/wd/hub',
   params: {
+    runtime: process.env.BOOSTER_RUNTIME,
     url: {
       boosters: {
         http: process.env.HTTP_BOOSTER_URL,
