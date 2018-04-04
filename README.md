@@ -22,6 +22,8 @@ export CONFIG_MAP_BOOSTER_VALUE="Hello, %s from a ConfigMap !"
 
 export SECURED_HTTP_BOOSTER_PASSWORD=password
 export SECURED_HTTP_BOOSTER_USERNAME=alice
+
+export BOOSTER_RUNTIME="vertx" //It is possible to set vertx,nodejs,springboot,wfswarm
 ```
 
 ## Run the test
