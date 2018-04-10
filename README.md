@@ -60,6 +60,14 @@ $ npm run webdriver:start
 $ npm run webdriver:update
 ```
 
+## Run specific test suite
+Name of test suit is same as the name of the booster.
+#### Requirement
+* You have to have a deployed booster and have their URL address
+```bash
+$ npm run test -- --suite=${booster} --parameters.url.boosters.${booster}=${boosterURL} --parameters.runtime=${boostersRuntime}
+```
+
 ## Run tests for all booster with the environmental variables
 Is necessary to set URL address of boosters and runtime of the boosters. Optionally you can set config map value and user credentials for secured booster
 #### Requirement
@@ -107,11 +115,4 @@ $ export SECURED_HTTP_BOOSTER_USERNAME=${securedBoosterUsername}
 $ export SECURED_HTTP_BOOSTER_PASSWORD=${securedBoosterPassword}
 
 $ npm run test
-```
-## Run specific test suite
-Name of test suit is same as the name of the booster.
-#### Requirement
-* You have to have a deployed booster and have their URL address
-```bash
-$ npm run test -- --suite=${booster} --parameters.url.boosters.${booster}=${boosterURL} --parameters.runtime=${boostersRuntime}
 ```
