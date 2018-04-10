@@ -37,10 +37,11 @@ export let config: Config = {
     },
     values: {
       boosters: {
-        configMap: process.env.CONFIG_MAP_BOOSTER_VALUE,
+        configMap: process.env.CONFIG_MAP_BOOSTER_VALUE ||
+            'Hello %s from a ConfigMap!',
         securedHttp: {
-          username: process.env.SECURED_HTTP_BOOSTER_USERNAME,
-          password: process.env.SECURED_HTTP_BOOSTER_PASSWORD,
+          username: process.env.SECURED_HTTP_BOOSTER_USERNAME || 'alice',
+          password: process.env.SECURED_HTTP_BOOSTER_PASSWORD || 'password',
         }
       }
     }
