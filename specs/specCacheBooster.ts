@@ -18,15 +18,23 @@ describe('Cache boosters spec', () => {
     browser.wait(EC.presenceOf(cachePage.getCacheStateElement(false)), 6000);
   });
 
-  it('Stored cache value', () => {
+  it('Stored cache value', async () => {
     const cachePage = new CachePage();
-    cachePage.get();
-    cachePage.clickInvoke();
+    await cachePage.get();
+    await cachePage.clickInvoke();
     const EC = protractor.ExpectedConditions;
-    browser.wait(EC.presenceOf(cachePage.getCacheStateElement(true)), 5000);
-    browser.wait(
+    await browser.wait(
+        EC.presenceOf(cachePage.getCacheStateElement(true)), 5000);
+    await browser.wait(
         EC.textToBePresentInElement(
             cachePage.getGreetingElement(), '{"message":"Hello '),
+        1000);
+    const generatedMessage = await cachePage.getGreetingElement().getText();
+    await cachePage.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(
+            cachePage.getGreetingElement(),
+            generatedMessage.replace(/ - duration: .*/g, '')),
         1000);
   });
 });
