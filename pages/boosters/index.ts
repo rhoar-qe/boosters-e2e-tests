@@ -7,3 +7,4 @@ export * from './healthCheckPage';
 export * from './securedHttpPage';
 export * from './securedSignOnPage';
 export * from './abstractGreetingServicePage';
+export * from './cachePage';

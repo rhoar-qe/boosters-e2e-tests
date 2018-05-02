@@ -9,6 +9,7 @@ For the first time, you have to install the [npm](https://www.npmjs.com/get-npm)
 * healthCheck
 * circuitBreaker
 * securedHttp
+* cache
 
 ## List of runtime
 * vertx
@@ -23,8 +24,8 @@ $ npm install
 ```
 ### Update and run webdriver manager
 ```bash
-$ npm run webdriver:start
 $ npm run webdriver:update
+$ npm run webdriver:start
 ```
 
 ## Run specific test suite
@@ -32,7 +33,7 @@ Name of test suit is same as the name of the booster.
 #### Requirement
 * You have to have a deployed booster and have their URL address
 ```bash
-$ npm run test -- --suite=${booster} --parameters.url.boosters.${booster}=${boosterURL} --parameters.runtime=${boostersRuntime}
+$ npm run test -- --suite=${booster} --params.url.boosters.${booster}=${boosterURL} --params.runtime=${boostersRuntime}
 ```
 
 ## Run tests for all booster with the environmental variables
@@ -43,26 +44,26 @@ Is necessary to set URL address of boosters and runtime of the boosters. Optiona
 ### Using the parameters
 ```bash
 $ npm run test -- \
-    --parameters.url.boosters.http=${httpURL} \
-    --parameters.url.boosters.configMap=${configMapURL} \
-    --parameters.url.boosters.crud=${crudURL} \
-    --parameters.url.boosters.healthCheck=${healthCheckURL} \
-    --parameters.url.boosters.circuitBreaker=${circuitBreakerURL} \
-    --parameters.url.boosters.securedHttp=${securedHttpURL} \
-    --parameters.runtime=${boostersRuntime}
+    --params.url.boosters.http=${httpURL} \
+    --params.url.boosters.configMap=${configMapURL} \
+    --params.url.boosters.crud=${crudURL} \
+    --params.url.boosters.healthCheck=${healthCheckURL} \
+    --params.url.boosters.circuitBreaker=${circuitBreakerURL} \
+    --params.url.boosters.securedHttp=${securedHttpURL} \
+    --params.runtime=${boostersRuntime}
 
 // Run tests with optional variables
 $ npm run test -- \
-    --parameters.url.boosters.http=${httpURL} \
-    --parameters.url.boosters.configMap=${configMapURL} \
-    --parameters.url.boosters.crud=${crudURL} \
-    --parameters.url.boosters.healthCheck=${healthCheckURL} \
-    --parameters.url.boosters.circuitBreaker=${circuitBreakerURL} \
-    --parameters.url.boosters.securedHttp=${securedHttpURL} \
-    --parameters.runtime=${boostersRuntime} \
-    --parameters.values.configMap=${configMapValue} \
-    --parameters.values.securedHttp.username=${securedHttpUsername}\
-    --parameters.values.securedHttp.password=${securedHttpPassword}
+    --params.url.boosters.http=${httpURL} \
+    --params.url.boosters.configMap=${configMapURL} \
+    --params.url.boosters.crud=${crudURL} \
+    --params.url.boosters.healthCheck=${healthCheckURL} \
+    --params.url.boosters.circuitBreaker=${circuitBreakerURL} \
+    --params.url.boosters.securedHttp=${securedHttpURL} \
+    --params.runtime=${boostersRuntime} \
+    --params.values.configMap=${configMapValue} \
+    --params.values.securedHttp.username=${securedHttpUsername}\
+    --params.values.securedHttp.password=${securedHttpPassword}
 
 ```
 ### Using the exported variables
@@ -73,6 +74,7 @@ $ export CRUD_BOOSTER_URL=${crudURL}
 $ export HEALTH_CHECK_BOOSTER_URL=${healthCheckURL}
 $ export CIRCUIT_BREAKER_BOOSTER_URL=${circuitBreakerURL}
 $ export SECURED_HTTP_BOOSTER_URL=${securedHttpURL}
+$ export CACHE_BOOSTER_URL=${cacheURL}
 
 $ export BOOSTER_RUNTIME=${boostersRuntime}
 

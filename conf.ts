@@ -21,6 +21,7 @@ export let config: Config = {
     configMap: ['specs/specConfigMapBooster.js'],
     healthCheck: ['specs/specHealthCheckBooster.js'],
     securedHttp: ['specs/specSecuredHttpBooster.js'],
+    cache: ['specs/specCacheBooster.js'],
   },
   seleniumAddress: 'http://localhost:4444/wd/hub',
   params: {
@@ -33,6 +34,7 @@ export let config: Config = {
         configMap: process.env.CONFIG_MAP_BOOSTER_URL,
         healthCheck: process.env.HEALTH_CHECK_BOOSTER_URL,
         securedHttp: process.env.SECURED_HTTP_BOOSTER_URL,
+        cache: process.env.CACHE_BOOSTER_URL,
       }
     },
     values: {
