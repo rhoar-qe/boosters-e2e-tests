@@ -1,43 +1,43 @@
-import {browser, protractor} from 'protractor';
+import {browser, ExpectedConditions as EC} from 'protractor';
 
-import {HealthCheck} from '../pages';
+import {HealthCheckPage} from '../pages';
 
-// The jasmine typings are brought in via DefinitelyTyped ambient typings.
-describe('Health check booster page', () => {
-  it('Greetings test with name', () => {
+describe('Health Check booster', () => {
+  it('Default greeting', async () => {
+    const name = HealthCheckPage.GREETINGS_DEFAULT_NAME;
+
+    const page = new HealthCheckPage();
+    await page.get();
+    await page.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
+  });
+
+  it('Greeting with given name', async () => {
     const name = 'Julie';
-    const healthCheckPage = new HealthCheck();
-    healthCheckPage.get();
-    healthCheckPage.setName(name);
-    healthCheckPage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            healthCheckPage.getGreetingElement(), 'Hello, ' + name),
-        1000);
+
+    const page = new HealthCheckPage();
+    await page.get();
+    await page.setName(name);
+    await page.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
   });
 
-  it('Test the default greeting', () => {
-    const healthCheckPage = new HealthCheck();
-    healthCheckPage.get();
-    const name = HealthCheck.GREETINGS_DEFAULT_NAME;
-    healthCheckPage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            healthCheckPage.getGreetingElement(), 'Hello, ' + name),
-        1000);
-  });
+  it('Stop service', async () => {
+    const name = HealthCheckPage.GREETINGS_DEFAULT_NAME;
 
-  it('Test the stop service', () => {
-    const healthCheckPage = new HealthCheck();
-    healthCheckPage.get();
-    healthCheckPage.clickStopService();
-    const name = HealthCheck.GREETINGS_DEFAULT_NAME;
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            healthCheckPage.getGreetingElement(), 'Hello, ' + name),
-        80000);
+    const page = new HealthCheckPage();
+    await page.get();
+    await page.clickStopService();
+    await browser.wait(
+        EC.and(
+            EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)),
+            EC.textToBePresentInElement(page.getGreetingElement(), 'recovery took')),
+        90_000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
+    expect(await page.getGreetingElement().getText()).toContain('recovery took');
   });
 });

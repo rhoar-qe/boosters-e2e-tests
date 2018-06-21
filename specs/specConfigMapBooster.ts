@@ -1,35 +1,28 @@
-import {browser, protractor} from 'protractor';
+import {browser, ExpectedConditions as EC} from 'protractor';
 
 import {ConfigMapPage} from '../pages';
 
-// The jasmine typings are brought in via DefinitelyTyped ambient typings.
-describe('ConfigMap booster page', () => {
-  it('Greetings test with name', () => {
-    const name = 'Julie';
-    const configMapPage = new ConfigMapPage();
-    configMapPage.get();
-    configMapPage.get();
-    configMapPage.setName(name);
-    configMapPage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            configMapPage.getGreetingElement(),
-            configMapPage.getExceptedGreetingResult(name)),
-        1000);
+describe('ConfigMap booster', () => {
+  it('Default greeting', async () => {
+    const name = ConfigMapPage.GREETINGS_DEFAULT_NAME;
+
+    const page = new ConfigMapPage();
+    await page.get();
+    await page.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
   });
 
-  it('Test the default greeting', () => {
-    const configMapPage = new ConfigMapPage();
-    configMapPage.get();
-    const name = ConfigMapPage.GREETINGS_DEFAULT_NAME;
-    configMapPage.get();
-    configMapPage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            configMapPage.getGreetingElement(),
-            configMapPage.getExceptedGreetingResult(name)),
-        1000);
+  it('Greeting with given name', async () => {
+    const name = 'Julie';
+
+    const page = new ConfigMapPage();
+    await page.get();
+    await page.setName(name);
+    await page.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
   });
 });

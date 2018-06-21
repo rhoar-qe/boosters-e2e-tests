@@ -1,31 +1,28 @@
-import {browser, protractor} from 'protractor';
+import {browser, ExpectedConditions as EC} from 'protractor';
 
 import {HttpPage} from '../pages';
 
-// The jasmine typings are brought in via DefinitelyTyped ambient typings.
-describe('HTTP booster page', () => {
-  it('Greetings test with name', () => {
-    const name = 'Julie';
-    const httpBoosterPage = new HttpPage();
-    httpBoosterPage.get();
-    httpBoosterPage.setName(name);
-    httpBoosterPage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            httpBoosterPage.getGreetingElement(), 'Hello, ' + name),
-        1000);
+describe('HTTP booster', () => {
+  it('Default greeting', async () => {
+    const name = HttpPage.GREETINGS_DEFAULT_NAME;
+
+    const page = new HttpPage();
+    await page.get();
+    await page.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
   });
 
-  it('Test the default greeting', () => {
-    const httpBoosterPage = new HttpPage();
-    const name = HttpPage.GREETINGS_DEFAULT_NAME;
-    httpBoosterPage.get();
-    httpBoosterPage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(
-        EC.textToBePresentInElement(
-            httpBoosterPage.getGreetingElement(), 'Hello, ' + name),
-        1000);
+  it('Greeting with given name', async () => {
+    const name = 'Julie';
+
+    const page = new HttpPage();
+    await page.get();
+    await page.setName(name);
+    await page.clickInvoke();
+    await browser.wait(
+        EC.textToBePresentInElement(page.getGreetingElement(), page.getExceptedGreetingResult(name)), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(page.getExceptedGreetingResult(name));
   });
 });
