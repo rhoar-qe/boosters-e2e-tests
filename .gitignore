@@ -1,7 +1,12 @@
-#Complied files
+# compiled files
 /js-files
-#Installed modules
+# installed modules
 /node_modules
-#result of tests
+# result of tests
 result.json
+# screenshot reports
+/reports
 
+# IntelliJ IDEA
+.idea
+*.iml

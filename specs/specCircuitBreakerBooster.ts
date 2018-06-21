@@ -1,65 +1,51 @@
-import {browser, protractor} from 'protractor';
+import {browser, ExpectedConditions as EC} from 'protractor';
 
 import {CircuitBreakerPage, GreetingResult, NameServiceState} from '../pages';
 
-describe('Circuit breaker booster page', () => {
-  const EC = protractor.ExpectedConditions;
-
+describe('Circuit Breaker booster', () => {
   beforeEach(async () => {
-    const circuitBreakerPage = new CircuitBreakerPage();
-    await circuitBreakerPage.get();
-    const text =
-        await circuitBreakerPage.getNameServiceStateElement().getText();
+    const page = new CircuitBreakerPage();
+    await page.get();
+    const text = await page.getNameServiceStateElement().getText();
     if (text === NameServiceState.Failure) {
-      await circuitBreakerPage.clickToggle();
-      browser.wait(
-          EC.textToBePresentInElement(
-              circuitBreakerPage.getNameServiceStateElement(),
-              NameServiceState.Working),
-          1000);
+      await page.clickToggle();
+      await browser.wait(
+          EC.textToBePresentInElement(page.getNameServiceStateElement(), NameServiceState.Working), 1000);
     }
+    expect(await page.getNameServiceStateElement().getText()).toContain(NameServiceState.Working);
   });
 
-  it('Click invoke without toggle', () => {
-    const circuitBreakerPage = new CircuitBreakerPage();
-    circuitBreakerPage.get();
-    browser.wait(
-        EC.textToBePresentInElement(
-            circuitBreakerPage.getNameServiceStateElement(),
-            NameServiceState.Working),
-        1000);
-    browser.wait(circuitBreakerPage.getGreetingElement().isPresent(), 1000);
-    circuitBreakerPage.clickInvoke();
-    browser.wait(
-        EC.textToBePresentInElement(
-            circuitBreakerPage.getGreetingElement(), GreetingResult.Working),
-        1000);
+  it('Name service OK', async () => {
+    const page = new CircuitBreakerPage();
+    await page.clickInvoke();
+    await browser.wait(EC.textToBePresentInElement(page.getGreetingElement(), GreetingResult.Working), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(GreetingResult.Working);
   });
 
-  it('Click invoke after click toggle and return to previous state', () => {
-    const circuitBreakerPage = new CircuitBreakerPage();
-    circuitBreakerPage.get();
-    circuitBreakerPage.clickToggle();
-    browser.wait(
-        EC.textToBePresentInElement(
-            circuitBreakerPage.getNameServiceStateElement(),
-            NameServiceState.Failure),
+  it('Name service turned off and on again', async () => {
+    const page = new CircuitBreakerPage();
+    await page.clickToggle();
+    await browser.wait(EC.textToBePresentInElement(page.getNameServiceStateElement(), NameServiceState.Failure), 1000);
+    expect(await page.getNameServiceStateElement().getText()).toContain(NameServiceState.Failure);
+
+    await page.clickInvoke();
+    await browser.wait(EC.textToBePresentInElement(page.getGreetingElement(), GreetingResult.Failure), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(GreetingResult.Failure);
+
+    await page.clickClear();
+    await browser.wait(
+        EC.and(
+            EC.not(EC.textToBePresentInElement(page.getGreetingElement(), GreetingResult.Working)),
+            EC.not(EC.textToBePresentInElement(page.getGreetingElement(), GreetingResult.Failure))),
         1000);
-    circuitBreakerPage.clickInvoke();
-    browser.wait(
-        EC.textToBePresentInElement(
-            circuitBreakerPage.getGreetingElement(), GreetingResult.Failure),
-        1000);
-    circuitBreakerPage.clickToggle();
-    browser.wait(
-        EC.textToBePresentInElement(
-            circuitBreakerPage.getNameServiceStateElement(),
-            NameServiceState.Working),
-        1000);
-    circuitBreakerPage.clickInvoke();
-    browser.wait(
-        EC.textToBePresentInElement(
-            circuitBreakerPage.getGreetingElement(), GreetingResult.Working),
-        1000);
+    expect(await page.getGreetingElement().getText()).toEqual('');
+
+    await page.clickToggle();
+    await browser.wait(EC.textToBePresentInElement(page.getNameServiceStateElement(), NameServiceState.Working), 1000);
+    expect(await page.getNameServiceStateElement().getText()).toContain(NameServiceState.Working);
+
+    await page.clickInvoke();
+    await browser.wait(EC.textToBePresentInElement(page.getGreetingElement(), GreetingResult.Working), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(GreetingResult.Working);
   });
 });

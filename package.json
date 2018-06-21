@@ -1,55 +1,24 @@
 {
-  "name": "rhoar-e2e-test",
-  "version": "0.0.0-development",
-  "description": "End to End tests for rhoar",
+  "name": "rhoar-boosters-e2e-tests",
+  "version": "1.0.0-dev",
+  "description": "E2E tests for RHOAR boosters",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/rhoar-ci/e2e-tests",
   "keywords": [
     "e2e",
-    "rhoar",
-    "tests"
+    "test",
+    "rhoar"
   ],
   "contributors": [
     {
       "name": "Adam Koniar",
       "email": "akoniar@redhat.com"
+    },
+    {
+      "name": "Ladislav Thon",
+      "email": "lthon@redhat.com"
     }
   ],
-  "homepage": "https://github.com/rhoar-ci/e2e-tests",
-  "license": "Apache-2.0",
-  "scripts": {
-    "test": "tsc && protractor js-files/conf.js",
-    "check": "gts check",
-    "clean": "gts clean",
-    "compile": "tsc -p .",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run check",
-    "webdriver:start": "webdriver-manager start",
-    "webdriver:update": "webdriver-manager update"
-  },
-  "main": "index.js",
-  "dependencies": {
-    "jasmine-protractor-matchers": "^2.0.0",
-    "jasmine-reporters": "^2.3.1",
-    "jasmine-spec-reporter": "4.2.1",
-    "jasmine2-reporter": "^0.3.0",
-    "npm": "^5.6.0",
-    "protractor": "^5.3.1",
-    "protractor-jasmine2-screenshot-reporter": "0.3.5",
-    "tsc": "^1.20150623.0"
-  },
-  "devDependencies": {
-    "@types/jasmine": "^2.8.2",
-    "@types/jasminewd2": "^2.0.3",
-    "@types/lodash": "4.14.61",
-    "@types/node": "^8.10.11",
-    "gts": "^0.5.3",
-    "rimraf": "^2.6.2",
-    "ts-helpers": "1.1.2",
-    "tslint": "5.8.0",
-    "tslint-loader": "^3.5.0",
-    "typescript": "~2.6.1"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:rhoar-ci/e2e-tests.git"
@@ -57,8 +26,28 @@
   "bugs": {
     "url": "https://github.com/rhoar-ci/e2e-tests/issues"
   },
+  "scripts": {
+    "check": "tslint --project .",
+    "pretest": "tsc",
+    "test": "protractor js-files/config.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "protractor": "5.3.2",
+    "jasmine": "2.8.0",
+    "protractor-screenshoter-plugin": "0.10.1",
+    "typescript": "2.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "8.10.20",
+    "@types/jasmine": "2.8.7",
+    "tslint": "5.10.0",
+    "tslint-config-airbnb": "5.9.2",
+    "tslint-consistent-codestyle": "1.13.1",
+    "tslint-microsoft-contrib": "5.0.3"
+  },
   "engines": {
-    "node": ">= 6.10.3",
-    "npm": ">= 3"
+    "node": ">= 8.9.0",
+    "npm": ">= 5.2.0"
   }
 }

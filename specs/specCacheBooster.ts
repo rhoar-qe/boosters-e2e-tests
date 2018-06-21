@@ -1,40 +1,41 @@
-import {browser, protractor} from 'protractor';
+import {browser, ExpectedConditions as EC} from 'protractor';
 
 import {CachePage} from '../pages';
 
-describe('Cache boosters spec', () => {
-  beforeEach(() => {
-    const cachePage = new CachePage();
-    cachePage.get();
-    cachePage.clickClear();
+describe('Cache booster', () => {
+  beforeEach(async () => {
+    const page = new CachePage();
+    await page.get();
+    await page.clickClear();
+    await browser.wait(EC.presenceOf(page.getCacheStateElement(false)), 1000);
+    expect(await page.getCacheStateElement(false).getText()).toContain('No cached value');
   });
 
-  it('Auto clear cache', () => {
-    const cachePage = new CachePage();
-    cachePage.get();
-    cachePage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    browser.wait(EC.presenceOf(cachePage.getCacheStateElement(true)), 5000);
-    browser.wait(EC.presenceOf(cachePage.getCacheStateElement(false)), 6000);
+  it('Cached value expires after a while', async () => {
+    const page = new CachePage();
+    await page.get();
+    await page.clickInvoke();
+    await browser.wait(EC.presenceOf(page.getCacheStateElement(true)), 3000);  // at least 2 seconds
+    expect(await page.getCacheStateElement(true).getText()).toContain('A value is cached');
+    expect(await page.getGreetingElement().getText()).toContain('Hello');
+    expect(await page.getGreetingElement().getText()).toContain('duration');
+
+    await browser.wait(EC.presenceOf(page.getCacheStateElement(false)), 6000);  // at least 5 seconds
+    expect(await page.getCacheStateElement(false).getText()).toContain('No cached value');
   });
 
-  it('Stored cache value', async () => {
-    const cachePage = new CachePage();
-    await cachePage.get();
-    await cachePage.clickInvoke();
-    const EC = protractor.ExpectedConditions;
-    await browser.wait(
-        EC.presenceOf(cachePage.getCacheStateElement(true)), 5000);
-    await browser.wait(
-        EC.textToBePresentInElement(
-            cachePage.getGreetingElement(), '{"message":"Hello '),
-        1000);
-    const generatedMessage = await cachePage.getGreetingElement().getText();
-    await cachePage.clickInvoke();
-    await browser.wait(
-        EC.textToBePresentInElement(
-            cachePage.getGreetingElement(),
-            generatedMessage.replace(/ - duration: .*/g, '')),
-        1000);
+  it('Value is cached for a while', async () => {
+    const page = new CachePage();
+    await page.get();
+    await page.clickInvoke();
+    await browser.wait(EC.presenceOf(page.getCacheStateElement(true)), 3000);  // at least 2 seconds
+    expect(await page.getCacheStateElement(true).getText()).toContain('A value is cached');
+    expect(await page.getGreetingElement().getText()).toContain('Hello');
+    expect(await page.getGreetingElement().getText()).toContain('duration');
+    const firstMessage = (await page.getGreetingElement().getText()).replace(/ - duration.*/g, '');
+
+    await page.clickInvoke();
+    await browser.wait(EC.textToBePresentInElement(page.getGreetingElement(), firstMessage), 1000);
+    expect(await page.getGreetingElement().getText()).toContain(firstMessage);
   });
 });

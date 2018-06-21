@@ -1,87 +1,89 @@
-# End to end test for boosters
+# End to end tests for RHOAR boosters
+
 ## Requirements
-For the first time, you have to install the [npm](https://www.npmjs.com/get-npm) and [protractor](http://www.protractortest.org).
+
+You have to have Node.js 8.9.0+ installed. NPM comes automatically with Node.js.
 
 ## List of boosters
-* http
-* configMap
-* crud
-* healthCheck
-* circuitBreaker
-* securedHttp
-* cache
 
-## List of runtime
-* vertx
-* nodejs
-* springboot
-* wfswarm
+* `http`
+* `configMap`
+* `crud`
+* `healthCheck`
+* `circuitBreaker`
+* `securedHttp`
+* `cache`
 
-## Before run test
+## List of runtimes
+
+* `vertx`
+* `nodejs`
+* `springboot`
+* `wfswarm`
+
+## Before running the tests
+
 ### Install dependencies
+
 ```bash
-$ npm install
+npm install
 ```
+
 ### Update and run webdriver manager
+
 ```bash
-$ npm run webdriver:update
-$ npm run webdriver:start
+npx webdriver-manager update
+npx webdriver-manager start
 ```
 
-## Run specific test suite
-Name of test suit is same as the name of the booster.
-#### Requirement
-* You have to have a deployed booster and have their URL address
+## Running tests for a single booster
+
+- `${booster}` is a string from the list of boosters above
+- `${runtime}` is a string from the list of runtimes above
+- `${boosterUrl}` is a URL of the booster deployed on OpenShift (TODO multi-service boosters)
+
 ```bash
-$ npm run test -- --suite=${booster} --params.url.boosters.${booster}=${boosterURL} --params.runtime=${boostersRuntime}
+npm run test -- --suite=${booster} --params.url.${booster}=${boosterUrl} --params.runtime=${runtime}
 ```
 
-## Run tests for all booster with the environmental variables
-Is necessary to set URL address of boosters and runtime of the boosters. Optionally you can set config map value and user credentials for secured booster
-#### Requirement
-* You have to to have deployed all boosters and have theirs URL address
+## Running tests for all boosters
 
-### Using the parameters
+### Using parameters
+
 ```bash
-$ npm run test -- \
-    --params.url.boosters.http=${httpURL} \
-    --params.url.boosters.configMap=${configMapURL} \
-    --params.url.boosters.crud=${crudURL} \
-    --params.url.boosters.healthCheck=${healthCheckURL} \
-    --params.url.boosters.circuitBreaker=${circuitBreakerURL} \
-    --params.url.boosters.securedHttp=${securedHttpURL} \
+npm run test -- \
+    --params.url.http=${httpUrl} \
+    --params.url.configMap=${configMapUrl} \
+    --params.url.crud=${crudUrl} \
+    --params.url.healthCheck=${healthCheckUrl} \
+    --params.url.circuitBreaker=${circuitBreakerUrl} \
+    --params.url.securedHttp=${securedHttpUrl} \
     --params.runtime=${boostersRuntime}
-
-// Run tests with optional variables
-$ npm run test -- \
-    --params.url.boosters.http=${httpURL} \
-    --params.url.boosters.configMap=${configMapURL} \
-    --params.url.boosters.crud=${crudURL} \
-    --params.url.boosters.healthCheck=${healthCheckURL} \
-    --params.url.boosters.circuitBreaker=${circuitBreakerURL} \
-    --params.url.boosters.securedHttp=${securedHttpURL} \
-    --params.runtime=${boostersRuntime} \
-    --params.values.configMap=${configMapValue} \
-    --params.values.securedHttp.username=${securedHttpUsername}\
-    --params.values.securedHttp.password=${securedHttpPassword}
-
 ```
-### Using the exported variables
+
 ```bash
-$ export HTTP_BOOSTER_URL=${httpURL}
-$ export CONFIG_MAP_BOOSTER_URL=${configMapURL} 
-$ export CRUD_BOOSTER_URL=${crudURL}
-$ export HEALTH_CHECK_BOOSTER_URL=${healthCheckURL}
-$ export CIRCUIT_BREAKER_BOOSTER_URL=${circuitBreakerURL}
-$ export SECURED_HTTP_BOOSTER_URL=${securedHttpURL}
-$ export CACHE_BOOSTER_URL=${cacheURL}
+npm run test -- \
+    --params.url.http=${httpUrl} \
+    --params.url.configMap=${configMapUrl} \
+    --params.url.crud=${crudUrl} \
+    --params.url.healthCheck=${healthCheckUrl} \
+    --params.url.circuitBreaker=${circuitBreakerUrl} \
+    --params.url.securedHttp=${securedHttpUrl} \
+    --params.runtime=${boostersRuntime}
+```
 
-$ export BOOSTER_RUNTIME=${boostersRuntime}
+### Using environment variables
 
-#Optional variables
-$ export CONFIG_MAP_BOOSTER_VALUE=${configMapValue}
-$ export SECURED_HTTP_BOOSTER_USERNAME=${securedBoosterUsername}
-$ export SECURED_HTTP_BOOSTER_PASSWORD=${securedBoosterPassword}
+```bash
+export HTTP_BOOSTER_URL=${httpUrl}
+export CONFIG_MAP_BOOSTER_URL=${configMapUrl} 
+export CRUD_BOOSTER_URL=${crudUrl}
+export HEALTH_CHECK_BOOSTER_URL=${healthCheckUrl}
+export CIRCUIT_BREAKER_BOOSTER_URL=${circuitBreakerUrl}
+export SECURED_HTTP_BOOSTER_URL=${securedHttpUrl}
+export CACHE_BOOSTER_URL=${cacheUrl}
 
-$ npm run test
+export BOOSTER_RUNTIME=${boostersRuntime}
+
+npm run test
 ```

@@ -1,3 +1,3 @@
+export * from './AbstractPage';
+export * from './AbstractAngularPage';
 export * from './boosters';
-export * from './abstractAngularPage';
-export * from './abstractNonAngularPage';
