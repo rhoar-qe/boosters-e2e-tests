@@ -20,6 +20,12 @@ export let config: Config = {
   restartBrowserBetweenTests: false,
   capabilities: {
     browserName: 'chrome',
+    chromeOptions: {
+      args: ['--headless', '--no-sandbox', '--disable-gpu', '--window-size=1024,768'],
+    },
+    'moz:firefoxOptions': {
+      args: ['--headless'],
+    },
   },
   plugins: [
     {package: 'protractor-screenshoter-plugin'},
