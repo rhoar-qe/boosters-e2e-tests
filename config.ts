@@ -1,3 +1,4 @@
+import {JUnitXmlReporter} from 'jasmine-reporters';
 import {browser, Config} from 'protractor';
 
 export let config: Config = {
@@ -28,9 +29,17 @@ export let config: Config = {
     },
   },
   plugins: [
-    {package: 'protractor-screenshoter-plugin'},
+    {
+      package: 'protractor-screenshoter-plugin',
+      screenshotPath: 'target/screenshot-reports',
+    },
   ],
-  onPrepare: async () => browser.getProcessedConfig(),
+  onPrepare: async () => {
+    await browser.getProcessedConfig();
+    jasmine.getEnv().addReporter(new JUnitXmlReporter({
+      savePath: 'target/junit-reports',
+    }));
+  },
 
   specs: ['specs/spec*.js'],
   suites: {
