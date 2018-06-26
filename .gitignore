@@ -4,8 +4,8 @@
 /node_modules
 # result of tests
 result.json
-# screenshot reports
-/reports
+# screenshot reports, JUnit XML reports
+/target
 
 # IntelliJ IDEA
 .idea
