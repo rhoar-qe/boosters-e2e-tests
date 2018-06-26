@@ -29,11 +29,10 @@ You have to have Node.js 8.9.0+ installed. NPM comes automatically with Node.js.
 npm install
 ```
 
-### Update and run webdriver manager
+### Update webdriver manager
 
 ```bash
 npx webdriver-manager update
-npx webdriver-manager start
 ```
 
 ## Running tests for a single booster
