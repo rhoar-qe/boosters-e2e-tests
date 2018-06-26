@@ -1,7 +1,7 @@
 import {browser, Config} from 'protractor';
 
 export let config: Config = {
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  directConnect: true,
   framework: 'jasmine',
   jasmineNodeOpts: {
     // This is also the default value for `browser.wait`, see https://github.com/angular/protractor/issues/4605.
