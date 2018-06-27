@@ -6,6 +6,7 @@ describe('Circuit Breaker booster', () => {
   beforeEach(async () => {
     const page = new CircuitBreakerPage();
     await page.get();
+    await browser.wait(EC.presenceOf(page.getNameServiceStateElement()), 1000);
     const text = await page.getNameServiceStateElement().getText();
     if (text === NameServiceState.Failure) {
       await page.clickToggle();
