@@ -60,17 +60,6 @@ npm run test -- \
     --params.runtime=${boostersRuntime}
 ```
 
-```bash
-npm run test -- \
-    --params.url.http=${httpUrl} \
-    --params.url.configMap=${configMapUrl} \
-    --params.url.crud=${crudUrl} \
-    --params.url.healthCheck=${healthCheckUrl} \
-    --params.url.circuitBreaker=${circuitBreakerUrl} \
-    --params.url.securedHttp=${securedHttpUrl} \
-    --params.runtime=${boostersRuntime}
-```
-
 ### Using environment variables
 
 ```bash
