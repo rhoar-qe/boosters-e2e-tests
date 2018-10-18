@@ -19,7 +19,7 @@ You have to have Node.js 8.9.0+ installed. NPM comes automatically with Node.js.
 * `vertx`
 * `nodejs`
 * `springboot`
-* `wfswarm`
+* `thorntail`
 
 ## Before running the tests
 
