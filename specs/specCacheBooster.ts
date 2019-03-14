@@ -8,7 +8,7 @@ import {CachePage} from '../pages';
 //
 // The timeouts in these tests are computed from that:
 // - 2 seconds to go from unknown state to non-cached state: 1 sec for polling + 1 sec of wiggle room
-// - 10 seconds to go from non-cached to cached state: 8 secs for computation (usually about 2 but sometimes takes long time)
+// - 10 seconds to go from non-cached to cached state: 8 secs for computation and wiggle room
 //      + 1 sec for polling + 1 sec of wiggle room
 // - 7 seconds to go from cached to non-cached state: 5 secs for expiration + 1 sec for polling + 1 sec of wiggle room
 
