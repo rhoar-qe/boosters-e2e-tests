@@ -8,7 +8,7 @@ import {CachePage} from '../pages';
 //
 // The timeouts in these tests are computed from that:
 // - 2 seconds to go from unknown state to non-cached state: 1 sec for polling + 1 sec of wiggle room
-// - 4 seconds to go from non-cached to cached state: 2 secs for computation + 1 sec for polling + 1 sec of wiggle room
+// - 10 seconds to go from non-cached to cached state: 2 secs for computation + 1 sec for polling + 7 sec of wiggle room
 // - 7 seconds to go from cached to non-cached state: 5 secs for expiration + 1 sec for polling + 1 sec of wiggle room
 
 describe('Cache booster', () => {
@@ -30,7 +30,7 @@ describe('Cache booster', () => {
   it('Cached value expires after a while', async () => {
     const page = new CachePage();
     await page.clickInvoke();
-    await browser.wait(EC.presenceOf(page.getCacheStateElement(true)), 4000);
+    await browser.wait(EC.presenceOf(page.getCacheStateElement(true)), 10000);
     expect(await page.getCacheStateElement(true).getText()).toContain('A value is cached');
     expect(await page.getGreetingElement().getText()).toContain('Hello');
     expect(await page.getGreetingElement().getText()).toContain('duration');
@@ -42,7 +42,7 @@ describe('Cache booster', () => {
   it('Value is cached for a while', async () => {
     const page = new CachePage();
     await page.clickInvoke();
-    await browser.wait(EC.presenceOf(page.getCacheStateElement(true)), 4000);
+    await browser.wait(EC.presenceOf(page.getCacheStateElement(true)), 10000);
     expect(await page.getCacheStateElement(true).getText()).toContain('A value is cached');
     expect(await page.getGreetingElement().getText()).toContain('Hello');
     expect(await page.getGreetingElement().getText()).toContain('duration');
